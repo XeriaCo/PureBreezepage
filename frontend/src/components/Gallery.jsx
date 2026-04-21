@@ -21,6 +21,18 @@ const PAIRS = [
     before: "https://images.pexels.com/photos/6195125/pexels-photo-6195125.jpeg",
     after: "https://images.pexels.com/photos/5824517/pexels-photo-5824517.jpeg",
   },
+  {
+    id: "p4",
+    label: "Wall Unit · Toowoomba",
+    before: "https://images.pexels.com/photos/6195125/pexels-photo-6195125.jpeg",
+    after: "https://images.pexels.com/photos/8961065/pexels-photo-8961065.jpeg",
+  },
+  {
+    id: "p5",
+    label: "Holiday Rental · Noosa",
+    before: "https://images.pexels.com/photos/7031717/pexels-photo-7031717.jpeg",
+    after: "https://images.pexels.com/photos/5824517/pexels-photo-5824517.jpeg",
+  },
 ];
 
 function ComparisonSlider({ before, after, label, testId }) {

@@ -14,6 +14,7 @@ export default function Hero() {
       {/* gradient backdrop */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-sky-50 via-white to-white" />
+        <div className="absolute inset-0 dot-grid opacity-70" />
         <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-sky-200/40 rounded-full blur-3xl" />
         <div className="absolute top-20 -right-40 w-[500px] h-[500px] bg-cyan-200/30 rounded-full blur-3xl" />
       </div>

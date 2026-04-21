@@ -35,7 +35,44 @@ export default function Benefits() {
               Our signature clean doesn't just remove the dirt — it restores your unit to better-than-new condition and your home to
               <span className="font-semibold text-slate-900"> fresh coastal air</span>.
             </p>
-            <div className="mt-8 p-6 rounded-3xl bg-gradient-to-br from-sky-50 to-cyan-50 border border-sky-100">
+
+            {/* photo mosaic */}
+            <div className="mt-8 grid grid-cols-3 gap-2" data-testid="benefits-photos">
+              <div className="relative aspect-square rounded-2xl overflow-hidden border border-sky-100">
+                <img
+                  src="https://images.pexels.com/photos/8961065/pexels-photo-8961065.jpeg"
+                  alt="Clean AC unit"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="relative aspect-square rounded-2xl overflow-hidden border border-sky-100 row-span-2">
+                <img
+                  src="https://images.pexels.com/photos/5824517/pexels-photo-5824517.jpeg"
+                  alt="Fresh AC"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="relative aspect-square rounded-2xl overflow-hidden border border-sky-100">
+                <img
+                  src="https://images.pexels.com/photos/6471913/pexels-photo-6471913.jpeg"
+                  alt="PureBreeze technician"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="relative col-span-2 aspect-[2/1] rounded-2xl overflow-hidden border border-sky-100">
+                <img
+                  src="https://images.pexels.com/photos/6195125/pexels-photo-6195125.jpeg"
+                  alt="AC servicing"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            <div className="mt-6 p-6 rounded-3xl bg-gradient-to-br from-sky-50 to-cyan-50 border border-sky-100">
               <div className="font-display text-5xl font-black text-sky-600 tracking-tighter">99.7%</div>
               <div className="text-sm text-slate-700 mt-1">of tested airborne pathogens eliminated after a PureBreeze clean.</div>
             </div>
