@@ -307,17 +307,23 @@ TIME_SLOT_LABELS = {
 SLOT_CAPACITY = 4  # max bookings per slot per day
 
 
+def _parse_booking_date(s: str) -> datetime:
+    try:
+        d = datetime.strptime(s, "%Y-%m-%d")
+    except (ValueError, TypeError):
+        raise HTTPException(status_code=400, detail="Invalid date (expected YYYY-MM-DD)")
+    return d
+
+
 @api_router.post("/bookings", response_model=Booking)
 async def create_booking(req: BookingRequest):
     if req.time_slot not in TIME_SLOT_LABELS:
         raise HTTPException(status_code=400, detail="Invalid time slot")
-    # basic date sanity
-    try:
-        datetime.fromisoformat(req.booking_date)
-    except Exception:
-        raise HTTPException(status_code=400, detail="Invalid booking_date (expected YYYY-MM-DD)")
+    booking_dt = _parse_booking_date(req.booking_date)
+    today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+    if booking_dt < today:
+        raise HTTPException(status_code=400, detail="booking_date cannot be in the past")
 
-    # capacity check
     existing = await db.bookings.count_documents({
         "booking_date": req.booking_date,
         "time_slot": req.time_slot,
@@ -334,10 +340,7 @@ async def create_booking(req: BookingRequest):
 @api_router.get("/bookings/availability")
 async def booking_availability(date: str):
     """Return remaining seats per slot for a given YYYY-MM-DD date."""
-    try:
-        datetime.fromisoformat(date)
-    except Exception:
-        raise HTTPException(status_code=400, detail="Invalid date (expected YYYY-MM-DD)")
+    _parse_booking_date(date)
     result = {}
     for slot, label in TIME_SLOT_LABELS.items():
         used = await db.bookings.count_documents({

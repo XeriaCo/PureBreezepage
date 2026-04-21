@@ -33,11 +33,18 @@ Build an air conditioner cleaning service company website called **PureBreeze** 
 - MongoDB persistence for both lead types verified.
 - All interactive elements have `data-testid`s.
 
+## What's Been Implemented — Feb 2026 (v2)
+- **Before/After Gallery** at `#gallery`: interactive drag-to-reveal comparison slider with 3 switchable pairs (Ducted Return · Brisbane, Split System · Gold Coast, Office AC · Sunshine Coast).
+- **Booking Calendar** at `#book`: shadcn Calendar + 3 time slots (morning/midday/afternoon, 4 seats each) + details form → `POST /api/bookings`. Real-time availability shown via `GET /api/bookings/availability`. Confirmation card with formatted date & slot. Capacity enforced (409 when full).
+- Hardened booking date validation: strict YYYY-MM-DD, past dates rejected.
+- Navbar updated with Gallery and Book links.
+- Tests: 16/16 backend + all new frontend flows green (iteration_2).
+
 ## P1 / Next Actions
-- **Email notifications** on new leads (Resend integration) so PureBreeze gets alerted instantly.
-- **Admin dashboard** at `/admin` to view leads (behind simple JWT auth).
-- **Booking calendar** (customer picks slot after AI quote).
-- **Before/After gallery** of real PureBreeze jobs.
+- **Email notifications** on new leads / bookings (Resend integration) so PureBreeze gets alerted instantly.
+- **Admin dashboard** at `/admin` to view leads + bookings (behind simple JWT auth).
+- **SMS booking confirmations** (Twilio) to reduce no-shows.
+- **Real before/after photos** — replace stock pairs with PureBreeze's own job photos when supplied.
 - **Google reviews widget** for social proof.
 
 ## P2
