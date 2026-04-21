@@ -40,7 +40,7 @@ export default function Benefits() {
             <div className="mt-8 grid grid-cols-3 gap-2" data-testid="benefits-photos">
               <div className="relative aspect-square rounded-2xl overflow-hidden border border-sky-100">
                 <img
-                  src="https://images.pexels.com/photos/8961065/pexels-photo-8961065.jpeg"
+                  src="https://static.prod-images.emergentagent.com/jobs/b709f5ab-53d0-4ea5-b4b8-9d180465e97f/images/92a2813178e78b5d984a568c8656e0b699106225dacea72c8bca9f4819eb04eb.png"
                   alt="Clean AC unit"
                   className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"

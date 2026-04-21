@@ -33,7 +33,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
         <a href="#top" className="flex-shrink-0" data-testid="nav-logo-link">
-          <PureBreezeLogo size={42} />
+          <PureBreezeLogo size={40} />
         </a>
 
         <nav className="hidden lg:flex items-center gap-8">

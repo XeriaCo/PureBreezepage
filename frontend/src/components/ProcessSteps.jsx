@@ -23,7 +23,7 @@ const PHOTOS = [
     alt: "Dirty AC filter before service",
   },
   {
-    src: "https://images.pexels.com/photos/8961065/pexels-photo-8961065.jpeg",
+    src: "https://static.prod-images.emergentagent.com/jobs/b709f5ab-53d0-4ea5-b4b8-9d180465e97f/images/92a2813178e78b5d984a568c8656e0b699106225dacea72c8bca9f4819eb04eb.png",
     alt: "Clean AC unit after service",
   },
   {

@@ -13,7 +13,7 @@ const PAIRS = [
     id: "p2",
     label: "Split System · Gold Coast",
     before: "https://images.pexels.com/photos/7031717/pexels-photo-7031717.jpeg",
-    after: "https://images.pexels.com/photos/8961065/pexels-photo-8961065.jpeg",
+    after: "https://static.prod-images.emergentagent.com/jobs/b709f5ab-53d0-4ea5-b4b8-9d180465e97f/images/92a2813178e78b5d984a568c8656e0b699106225dacea72c8bca9f4819eb04eb.png",
   },
   {
     id: "p3",
@@ -25,7 +25,7 @@ const PAIRS = [
     id: "p4",
     label: "Wall Unit · Toowoomba",
     before: "https://images.pexels.com/photos/6195125/pexels-photo-6195125.jpeg",
-    after: "https://images.pexels.com/photos/8961065/pexels-photo-8961065.jpeg",
+    after: "https://static.prod-images.emergentagent.com/jobs/b709f5ab-53d0-4ea5-b4b8-9d180465e97f/images/92a2813178e78b5d984a568c8656e0b699106225dacea72c8bca9f4819eb04eb.png",
   },
   {
     id: "p5",

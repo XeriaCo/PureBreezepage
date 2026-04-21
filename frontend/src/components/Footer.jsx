@@ -13,12 +13,10 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-10">
           <div>
-            <div className="bg-white rounded-2xl p-3 inline-block">
-              <PureBreezeLogo size={42} />
-            </div>
+            <PureBreezeLogo size={40} variant="dark" />
             <p className="mt-5 text-sm text-slate-400 leading-relaxed max-w-xs">
               Queensland's most trusted air conditioner cleaning service.
-              Breathe pure. Live better.
+              Professional. Certified. Guaranteed.
             </p>
           </div>
 
