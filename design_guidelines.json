@@ -1,0 +1,131 @@
+{
+  "theme_and_archetype": {
+    "domain": "Home Services & Wellness",
+    "theme": "light",
+    "archetype": "Archetype 1 (Organic & Earthy) blended with Archetype 4 (Swiss/Clear)",
+    "vibe": "Fresh, trustworthy, medical-grade clean, and slightly urgent (for the dangers section).",
+    "rationale": "As an AC cleaning service dealing with mold and health hazards, the design must inspire trust and cleanliness (light blue/white). The 'scary facts' section requires high contrast (danger/warning cues) to drive action, contrasting beautifully with the pristine 'PureBreeze' sections."
+  },
+  "typography": {
+    "heading_font": "Outfit",
+    "body_font": "DM Sans",
+    "logo_font": "Outfit",
+    "rules": {
+      "headings": "Use 'Outfit' for all headings. Apply tight letter spacing (tracking-tight) for H1-H3. Use font-black for extreme emphasis in the 'Scary Facts' section, and font-light to font-medium for premium brand feel elsewhere.",
+      "body": "Use 'DM Sans' with leading-relaxed. Never use Inter or Roboto.",
+      "sizes": {
+        "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tighter",
+        "h2": "text-3xl sm:text-4xl lg:text-5xl tracking-tight",
+        "h3": "text-2xl sm:text-3xl tracking-tight",
+        "h4": "text-lg sm:text-xl font-medium",
+        "body": "text-base text-slate-600"
+      }
+    }
+  },
+  "colors": {
+    "background": {
+      "primary": "#FFFFFF",
+      "secondary": "#F0F9FF",
+      "danger_section": "#0A0A0A"
+    },
+    "text": {
+      "primary": "#0F172A",
+      "secondary": "#475569",
+      "inverse": "#FFFFFF",
+      "danger": "#EF4444"
+    },
+    "brand": {
+      "light_blue": "#38BDF8",
+      "primary_blue": "#0EA5E9",
+      "deep_blue": "#0369A1"
+    },
+    "accent": {
+      "warning_red": "#DC2626",
+      "fresh_teal": "#2DD4BF"
+    },
+    "rules": "Avoid default gray for text; use slate (blue-tinted gray) to harmonize with the light blue brand color. The 'Scary Facts' section should flip to a dark mode layout (Deep Black background) with Warning Red and stark white text for maximum emotional impact."
+  },
+  "layout_and_spacing": {
+    "spacing_scale": "Use generous padding. p-8 to p-12 for bento cards. py-24 or py-32 for section wrappers.",
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "grid_strategy": {
+      "features": "Bento grid (Tetris style). Mix col-span-12, col-span-8, col-span-4.",
+      "services": "Even 3-column or 4-column grid (Control Room style) for equal hierarchy."
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-sky-500 hover:bg-sky-600 text-white rounded-full px-8 py-4 font-semibold shadow-lg shadow-sky-500/30 transition-all hover:-translate-y-1",
+      "ai_quote": "Relative container, bg-gradient-to-r from-sky-400 to-blue-600 text-white rounded-2xl px-8 py-4 font-bold overflow-hidden group, with an animated shine/tracing beam effect on hover.",
+      "danger_cta": "bg-red-600 hover:bg-red-700 text-white rounded-full px-8 py-4 font-bold"
+    },
+    "cards": {
+      "standard": "bg-white rounded-3xl border border-sky-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8",
+      "danger": "bg-neutral-900 rounded-3xl border border-red-900/50 shadow-[0_8px_30px_rgba(220,38,38,0.1)] p-8 text-white",
+      "glass": "bg-white/70 backdrop-blur-xl border border-white/40 shadow-sm rounded-3xl p-8"
+    },
+    "shadcn_overrides": "Use Shadcn components for the AI Quote form (Input, Label, Button, Card). Override default border-radius to rounded-2xl to match the modern/organic theme. Ensure inputs have focus:ring-sky-500."
+  },
+  "motion_and_interactions": {
+    "hero_animation": "The PureBreeze logo/graphic must have a floating animation (Framer Motion y-axis floating). The 'breeze' vectors should have a slow, pulsing opacity and translation to simulate air flow.",
+    "scroll_reveals": "Use Framer Motion `whileInView` for sections. The 'Scary Facts' should aggressively snap or fade in with high contrast to shock the user.",
+    "hover_states": "All interactive elements must lift slightly (-translate-y-1) and increase shadow depth."
+  },
+  "media_assets": {
+    "hero_graphic": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/b709f5ab-53d0-4ea5-b4b8-9d180465e97f/images/39b186707dac83a530beec435986adfed63bd3474db6919a6a65e7ef3ddb9cbc.png",
+      "description": "Vector illustration of AC blowing glowing blue breeze. Use as the central hero visual or hero background accent."
+    },
+    "clean_benefits": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/b709f5ab-53d0-4ea5-b4b8-9d180465e97f/images/92a2813178e78b5d984a568c8656e0b699106225dacea72c8bca9f4819eb04eb.png",
+      "description": "Pristine, glowing clean AC unit. Use in the 'Benefits of Clean AC' section to show the desired end state."
+    },
+    "scary_facts_macro": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/b709f5ab-53d0-4ea5-b4b8-9d180465e97f/images/0d662876af8c568d48d6c53e9a756f60034076d3c543224f5eae53618964224d.png",
+      "description": "Terrifying macro shot of dust, black mold, and glowing toxic bacteria inside a dark AC vent. Use as a full-bleed background or massive bento grid image in the 'Scary Facts' section."
+    },
+    "ai_quote_scanner": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/b709f5ab-53d0-4ea5-b4b8-9d180465e97f/images/2deacaae369163777a486ddf115cc9dfd8a48d2be2d19d1a94cea64682810d51.png",
+      "description": "AI phone scanner tool analyzing an AC unit. Use next to the Photo Quote form."
+    },
+    "technician_trust": {
+      "url": "https://images.pexels.com/photos/6471913/pexels-photo-6471913.jpeg",
+      "description": "Professional HVAC technician. Use in the 'Selling Points' / 'Why Choose Us' section."
+    },
+    "lifestyle_clean_air": {
+      "url": "https://images.unsplash.com/photo-1776482128012-a47f853abd57?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODd8MHwxfHNlYXJjaHwyfHxjbGVhbiUyMG1vZGVybiUyMGxpdmluZyUyMHJvb20lMjBmcmVzaCUyMGFpcnxlbnwwfHx8fDE3NzY3ODkxNzV8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Clean modern living room representing healthy fresh air. Use as a background or context image in benefits."
+    }
+  },
+  "sections_blueprint": [
+    {
+      "name": "Header & Nav",
+      "details": "Sticky crystal glassmorphism header (backdrop-blur-xl bg-white/80). Logo: 'PureBreeze' with a small CSS-animated breeze SVG. Nav links: Services, Danger Facts, AI Quote, Contact. CTA: 'Get AI Quote'."
+    },
+    {
+      "name": "Hero Section",
+      "details": "Light blue gradient background (bg-sky-50 to white). Bold H1: 'Breathe Pure. Live Better in Queensland.' Subtext about removing mold and restoring airflow. Primary CTA: 'Scan Your AC for an Instant Quote'. Visual: The ac_breeze_logo floating image."
+    },
+    {
+      "name": "The 'Scary Facts' (Dangers)",
+      "details": "CRITICAL CONTRAST SHIFT. Background turns pitch black (bg-neutral-950). Red accents. H2: 'What’s Hiding in Your Air?' List facts: Black mold spores, fire risks, skyrocketing energy bills, asthma triggers. Use scary_facts_macro image. Layout: Asymmetric Bento Grid."
+    },
+    {
+      "name": "Benefits of Clean AC",
+      "details": "Return to light, fresh theme (bg-white). H2: 'Experience the PureBreeze Difference'. Use pristine_clean_ac image. Points: 30% lower power bills, zero mold, whisper-quiet operation, healthy family."
+    },
+    {
+      "name": "AI Photo Quote (Interactive Tool)",
+      "details": "Split layout. Left: ai_quote_scanner image with selling points ('Snap a pic, get a quote in seconds'). Right: Shadcn Form with a Drag & Drop file upload zone (styled with dashed sky-blue borders), inputs for Name, Phone, Email, and Address. Submit button with scanning animation."
+    },
+    {
+      "name": "Selling Points & Trust",
+      "details": "Use technician_trust image. Grid of trust badges (Lucide icons): 100% Queensland Owned, Fully Qualified Technicians, Same-Day Service, Eco-Friendly Sanitisation."
+    },
+    {
+      "name": "Footer",
+      "details": "Deep Navy background (bg-slate-900). White text. Huge contact display: Phone: 0490 507 878, Email: PureBreeze@gmail.com. List of Queensland service areas (Brisbane, Gold Coast, Sunshine Coast, etc.)."
+    }
+  ],
+  "testing_attributes": "All interactive elements (buttons, form inputs, file uploaders) MUST have a data-testid attribute in kebab-case (e.g., data-testid='ai-quote-upload', data-testid='contact-phone')."
+}
