@@ -4,7 +4,9 @@ import Hero from "@/components/Hero";
 import ScaryFacts from "@/components/ScaryFacts";
 import Benefits from "@/components/Benefits";
 import Services from "@/components/Services";
+import Gallery from "@/components/Gallery";
 import AIQuote from "@/components/AIQuote";
+import BookingCalendar from "@/components/BookingCalendar";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
@@ -20,7 +22,9 @@ export default function LandingPage() {
         <ScaryFacts />
         <Benefits />
         <Services />
+        <Gallery />
         <AIQuote />
+        <BookingCalendar />
         <WhyChooseUs />
         <Testimonials />
         <FAQ />

@@ -99,6 +99,31 @@ class ContactLead(BaseModel):
     created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
 
+class BookingRequest(BaseModel):
+    name: str
+    phone: str
+    email: Optional[EmailStr] = None
+    address: str
+    service_type: str = "split_system"
+    booking_date: str  # YYYY-MM-DD
+    time_slot: str  # morning | midday | afternoon
+    notes: Optional[str] = None
+
+
+class Booking(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    phone: str
+    email: Optional[str] = None
+    address: str
+    service_type: str
+    booking_date: str
+    time_slot: str
+    notes: Optional[str] = None
+    status: str = "pending"
+    created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+
+
 # ---------- Pricing base ranges (QLD AUD) ----------
 PRICING_BASE = {
     "split_system":   {"min": 165, "max": 220, "hours": 1.0},
@@ -269,6 +294,68 @@ async def list_quote_leads():
 @api_router.get("/leads/contacts", response_model=List[ContactLead])
 async def list_contact_leads():
     rows = await db.contact_leads.find({}, {"_id": 0}).sort("created_at", -1).to_list(500)
+    return rows
+
+
+# ---------- Bookings ----------
+TIME_SLOT_LABELS = {
+    "morning": "Morning (7am – 11am)",
+    "midday": "Midday (11am – 2pm)",
+    "afternoon": "Afternoon (2pm – 5pm)",
+}
+
+SLOT_CAPACITY = 4  # max bookings per slot per day
+
+
+@api_router.post("/bookings", response_model=Booking)
+async def create_booking(req: BookingRequest):
+    if req.time_slot not in TIME_SLOT_LABELS:
+        raise HTTPException(status_code=400, detail="Invalid time slot")
+    # basic date sanity
+    try:
+        datetime.fromisoformat(req.booking_date)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid booking_date (expected YYYY-MM-DD)")
+
+    # capacity check
+    existing = await db.bookings.count_documents({
+        "booking_date": req.booking_date,
+        "time_slot": req.time_slot,
+        "status": {"$ne": "cancelled"},
+    })
+    if existing >= SLOT_CAPACITY:
+        raise HTTPException(status_code=409, detail="Sorry, that slot is fully booked. Please pick another.")
+
+    booking = Booking(**req.model_dump())
+    await db.bookings.insert_one(booking.model_dump())
+    return booking
+
+
+@api_router.get("/bookings/availability")
+async def booking_availability(date: str):
+    """Return remaining seats per slot for a given YYYY-MM-DD date."""
+    try:
+        datetime.fromisoformat(date)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid date (expected YYYY-MM-DD)")
+    result = {}
+    for slot, label in TIME_SLOT_LABELS.items():
+        used = await db.bookings.count_documents({
+            "booking_date": date,
+            "time_slot": slot,
+            "status": {"$ne": "cancelled"},
+        })
+        result[slot] = {
+            "label": label,
+            "remaining": max(0, SLOT_CAPACITY - used),
+            "capacity": SLOT_CAPACITY,
+        }
+    return {"date": date, "slots": result}
+
+
+@api_router.get("/leads/bookings", response_model=List[Booking])
+async def list_bookings():
+    rows = await db.bookings.find({}, {"_id": 0}).sort("created_at", -1).to_list(500)
     return rows
 
 

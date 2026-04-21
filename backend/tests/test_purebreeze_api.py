@@ -170,3 +170,138 @@ class TestLeads:
         assert r.status_code == 200
         for row in r.json():
             assert '_id' not in row
+
+
+# ---------- Bookings (new feature) ----------
+def _future_date(offset_days=0):
+    # Use far-future dates by year to avoid collision with existing data
+    base_year = 2030
+    # make offset spread across unique dates
+    from datetime import date, timedelta
+    d = date(base_year, 6, 1) + timedelta(days=offset_days)
+    return d.isoformat()
+
+
+class TestBookingAvailability:
+    def test_availability_future_date(self, s):
+        d = _future_date(0)
+        r = s.get(f"{API}/bookings/availability", params={'date': d}, timeout=15)
+        assert r.status_code == 200, r.text
+        data = r.json()
+        assert data['date'] == d
+        assert 'slots' in data
+        for slot in ['morning', 'midday', 'afternoon']:
+            assert slot in data['slots']
+            sd = data['slots'][slot]
+            assert 'label' in sd and 'remaining' in sd and 'capacity' in sd
+            assert sd['capacity'] == 4
+            assert 0 <= sd['remaining'] <= 4
+
+    def test_availability_invalid_date(self, s):
+        r = s.get(f"{API}/bookings/availability", params={'date': 'not-a-date'}, timeout=15)
+        assert r.status_code == 400
+
+    def test_availability_missing_date_param(self, s):
+        r = s.get(f"{API}/bookings/availability", timeout=15)
+        assert r.status_code == 422
+
+
+class TestBookingCreate:
+    def test_create_and_decrement(self, s):
+        d = _future_date(1)
+        # initial remaining
+        r0 = s.get(f"{API}/bookings/availability", params={'date': d}, timeout=15)
+        initial = r0.json()['slots']['morning']['remaining']
+        assert initial >= 1, "test requires at least 1 slot free"
+
+        payload = {
+            'name': 'TEST_Booker',
+            'phone': '0400123123',
+            'address': '1 Test St, Brisbane',
+            'service_type': 'split_system',
+            'booking_date': d,
+            'time_slot': 'morning',
+            'email': 'test_booker@example.com',
+            'notes': 'TEST booking'
+        }
+        r = s.post(f"{API}/bookings", json=payload, timeout=20)
+        assert r.status_code == 200, r.text
+        b = r.json()
+        assert 'id' in b and len(b['id']) > 0
+        assert b['status'] == 'pending'
+        assert b['booking_date'] == d
+        assert b['time_slot'] == 'morning'
+        assert b['name'] == 'TEST_Booker'
+
+        # availability decremented
+        r1 = s.get(f"{API}/bookings/availability", params={'date': d}, timeout=15)
+        after = r1.json()['slots']['morning']['remaining']
+        assert after == initial - 1, f"expected {initial-1}, got {after}"
+
+    def test_create_invalid_time_slot(self, s):
+        payload = {
+            'name': 'TEST_Bad',
+            'phone': '0400',
+            'address': 'x',
+            'booking_date': _future_date(2),
+            'time_slot': 'evening',  # invalid
+        }
+        r = s.post(f"{API}/bookings", json=payload, timeout=15)
+        assert r.status_code == 400
+
+    def test_create_invalid_date(self, s):
+        payload = {
+            'name': 'TEST_Bad',
+            'phone': '0400',
+            'address': 'x',
+            'booking_date': 'tomorrow',
+            'time_slot': 'morning',
+        }
+        r = s.post(f"{API}/bookings", json=payload, timeout=15)
+        assert r.status_code == 400
+
+    def test_create_missing_required(self, s):
+        # missing address + booking_date
+        r = s.post(f"{API}/bookings", json={'name': 'TEST', 'phone': '0400', 'time_slot': 'morning'}, timeout=15)
+        assert r.status_code == 422
+
+    def test_slot_full_returns_409(self, s):
+        d = _future_date(3)  # unique date
+        slot = 'afternoon'
+        # check initial remaining - should be 4 if nothing booked
+        r0 = s.get(f"{API}/bookings/availability", params={'date': d}, timeout=15)
+        rem = r0.json()['slots'][slot]['remaining']
+        # Fill to capacity
+        for i in range(rem):
+            p = {
+                'name': f'TEST_Fill_{i}',
+                'phone': '0400000000',
+                'address': 'Fill St',
+                'booking_date': d,
+                'time_slot': slot,
+            }
+            rr = s.post(f"{API}/bookings", json=p, timeout=15)
+            assert rr.status_code == 200, rr.text
+        # One more must 409
+        p = {
+            'name': 'TEST_Overflow',
+            'phone': '0400000000',
+            'address': 'Fill St',
+            'booking_date': d,
+            'time_slot': slot,
+        }
+        r = s.post(f"{API}/bookings", json=p, timeout=15)
+        assert r.status_code == 409, r.text
+
+
+class TestBookingsList:
+    def test_list_bookings_no_objectid(self, s):
+        r = s.get(f"{API}/leads/bookings", timeout=20)
+        assert r.status_code == 200
+        rows = r.json()
+        assert isinstance(rows, list)
+        for row in rows:
+            assert '_id' not in row
+            assert 'id' in row
+            assert 'booking_date' in row
+            assert 'time_slot' in row
