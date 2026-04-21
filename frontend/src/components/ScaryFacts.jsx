@@ -137,7 +137,7 @@ export default function ScaryFacts() {
           </div>
           <a
             href="#ai-quote"
-            className="inline-flex items-center justify-center rounded-full bg-white text-red-700 px-7 py-3.5 font-bold shadow-xl btn-lift"
+            className="inline-flex items-center justify-center rounded-full bg-white text-red-700 hover:bg-red-50 px-7 py-3.5 font-bold text-sm shadow-xl btn-lift whitespace-nowrap"
             data-testid="scary-cta-button"
           >
             Scan My AC Now →
