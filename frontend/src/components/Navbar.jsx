@@ -7,7 +7,7 @@ const NAV = [
   { label: "Services", href: "#services" },
   { label: "Danger Facts", href: "#danger" },
   { label: "Gallery", href: "#gallery" },
-  { label: "AI Quote", href: "#ai-quote" },
+  { label: "Quote", href: "#ai-quote" },
   { label: "Book", href: "#book" },
   { label: "Contact", href: "#contact" },
 ];
@@ -63,7 +63,7 @@ export default function Navbar() {
             className="rounded-full bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 shadow-lg shadow-sky-500/30 btn-lift"
             data-testid="nav-cta-quote"
           >
-            Get AI Quote
+            Get Quote
           </Button>
         </div>
 
@@ -106,7 +106,7 @@ export default function Navbar() {
             className="w-full rounded-full bg-sky-500 hover:bg-sky-600 text-white"
             data-testid="nav-mobile-cta"
           >
-            Get AI Quote
+            Get Quote
           </Button>
         </div>
       )}

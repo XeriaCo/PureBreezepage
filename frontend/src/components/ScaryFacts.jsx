@@ -132,7 +132,7 @@ export default function ScaryFacts() {
               Don't let your AC make your family sick.
             </h3>
             <p className="text-red-100 mt-1 text-sm sm:text-base">
-              Get an instant AI quote in under 60 seconds — no call required.
+              Get an instant quote in under 60 seconds — no call required.
             </p>
           </div>
           <a

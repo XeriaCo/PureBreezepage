@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import StatsCounter from "@/components/StatsCounter";
 import ScaryFacts from "@/components/ScaryFacts";
 import Benefits from "@/components/Benefits";
+import FoundersNote from "@/components/FoundersNote";
 import Services from "@/components/Services";
 import Gallery from "@/components/Gallery";
 import ProcessSteps from "@/components/ProcessSteps";
@@ -28,6 +29,7 @@ export default function LandingPage() {
         <StatsCounter />
         <ScaryFacts />
         <Benefits />
+        <FoundersNote />
         <Services />
         <ProcessSteps />
         <Gallery />

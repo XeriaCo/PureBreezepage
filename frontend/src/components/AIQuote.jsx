@@ -137,18 +137,20 @@ export default function AIQuote() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto"
+          className="max-w-3xl"
         >
-          <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sky-100 to-cyan-100 border border-sky-200 px-4 py-2 mb-5">
-            <Sparkles size={14} className="text-sky-600" />
-            <span className="text-xs font-bold tracking-widest uppercase text-sky-700">AI-Powered Quote</span>
+          <div className="flex items-center gap-3 mb-5">
+            <span className="font-mono text-xs tracking-widest uppercase text-slate-500">§ 05</span>
+            <span className="h-px w-10 bg-slate-300" />
+            <span className="font-mono text-xs tracking-widest uppercase text-slate-500">Photo quote</span>
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter text-slate-900 leading-[1.05]">
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter text-slate-900 leading-[1.02]">
             Snap a photo. <br />
-            <span className="text-sky-500">Get a quote in seconds.</span>
+            <span className="serif-italic text-sky-600">Know the price</span> in seconds.
           </h2>
-          <p className="mt-5 text-lg text-slate-600">
-            Our AI inspects your unit for mould, dust and damage — then returns a transparent price instantly. No call required.
+          <p className="mt-5 text-lg text-slate-600 max-w-xl leading-relaxed border-l-2 border-sky-200 pl-5">
+            Our vision engine inspects your unit for mould, dust and damage — then returns a transparent price instantly.
+            No call required, no pressure to book.
           </p>
         </motion.div>
 
@@ -295,7 +297,7 @@ export default function AIQuote() {
                 </span>
               ) : (
                 <span className="flex items-center gap-2">
-                  <Sparkles size={18} /> Generate My AI Quote
+                  <Sparkles size={18} /> Generate My Quote
                 </span>
               )}
             </Button>
