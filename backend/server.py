@@ -431,7 +431,9 @@ async def list_bookings_public():
 # ================= ADMIN =================
 @api_router.post("/admin/login")
 async def admin_login(req: AdminLogin, request: Request):
-    ip = request.client.host if request.client else "unknown"
+    # Real client IP (X-Forwarded-For left-most), fallback to TCP peer
+    xff = request.headers.get("x-forwarded-for") or request.headers.get("x-real-ip")
+    ip = (xff.split(",")[0].strip() if xff else (request.client.host if request.client else "unknown"))
     await _check_lockout(ip)
     if not bcrypt.checkpw(req.password.encode(), ADMIN_PASSWORD_HASH.encode()):
         await _record_failed(ip)

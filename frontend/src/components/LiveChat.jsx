@@ -132,7 +132,7 @@ export default function LiveChat() {
               type="submit"
               disabled={!text.trim() || sending}
               className="rounded-full bg-sky-500 hover:bg-sky-600 w-10 h-10 p-0 flex items-center justify-center"
-              data-testid="chat-send"
+              data-testid="live-chat-send"
             >
               <Send size={16} />
             </Button>

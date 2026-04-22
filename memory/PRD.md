@@ -40,6 +40,17 @@ Build an air conditioner cleaning service company website called **PureBreeze** 
 - Navbar updated with Gallery and Book links.
 - Tests: 16/16 backend + all new frontend flows green (iteration_2).
 
+## What's Been Implemented — Feb 2026 (v3)
+- **Admin dashboard at `/admin`** with password-only login (password: `1302`, JWT 7-day token in localStorage as `pb_admin_token`). See `/app/memory/test_credentials.md`.
+- **Admin console sections**: Overview (stats tiles), Bookings (table + status dropdown via PATCH), Photo Quotes (cards), Contacts (table), Wingman · Leads, Wingman · Research, Wingman · Competitors, Live Chat (conversation list + transcript view).
+- **Emergent Wingman integration-ready**: unauthenticated webhook endpoints `POST /api/wingman/{leads,research,competitors}` to receive pushed data; authenticated GETs for admin to view. URLs displayed on Overview page.
+- **Brute-force protection**: 5 failed attempts / 15-min lockout, with **X-Forwarded-For** real-IP detection (critical for K8s ingress — tested, works).
+- **Real-time booking**: `BookingCalendar` polls `/api/bookings/availability` every 20s with a pulsing "Live availability" badge.
+- **Click-to-call floating button** (bottom-left, always visible desktop + mobile, `tel:0490507878`).
+- **Live chat widget** (bottom-right launcher + panel) powered by **Gemini 3 Flash** via Emergent LLM Key — transcripts stored and visible in admin dashboard, ready to be swapped for Emergent Wingman when live.
+- **Photo Quote feature removed** from public landing page; all primary CTAs renamed to "Book Now" and point to `#book`. Backend `/api/quote/analyze` endpoint kept for future use. Stale FAQ entry updated.
+- Testing: 32/32 pytest pass on `test_admin_wingman_chat.py` + `test_purebreeze_api.py`. Brute-force IP bug discovered and fixed (X-Forwarded-For).
+
 ## P1 / Next Actions
 - **Email notifications** on new leads / bookings (Resend integration) so PureBreeze gets alerted instantly.
 - **Admin dashboard** at `/admin` to view leads + bookings (behind simple JWT auth).

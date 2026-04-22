@@ -15,8 +15,8 @@ const FAQS = [
     a: "Absolutely. We use hospital-grade, biodegradable sanitisers that are non-toxic once dry. The area is safe to re-enter immediately after cleaning." },
   { q: "What if my unit has a problem you can't fix?",
     a: "We'll identify it, explain it in plain English, and only charge for the clean. We never upsell repairs you don't need." },
-  { q: "How accurate is the AI quote?",
-    a: "The AI quote is an estimate based on visible dirtiness from your photo. The final on-site price is usually within 10–15% of the AI range and is always confirmed before work begins." },
+  { q: "How soon can you come out?",
+    a: "Same-day bookings across all of South-East Queensland if you book before midday. Morning (7-11am), midday (11am-2pm) and afternoon (2-5pm) slots are visible live on our booking calendar." },
 ];
 
 export default function FAQ() {
