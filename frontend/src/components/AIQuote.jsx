@@ -140,7 +140,7 @@ export default function AIQuote() {
           className="max-w-3xl"
         >
           <div className="flex items-center gap-3 mb-5">
-            <span className="font-mono text-xs tracking-widest uppercase text-slate-500">§ 05</span>
+            <span className="font-mono text-xs tracking-widest uppercase text-slate-500">§ 03</span>
             <span className="h-px w-10 bg-slate-300" />
             <span className="font-mono text-xs tracking-widest uppercase text-slate-500">Photo quote</span>
           </div>

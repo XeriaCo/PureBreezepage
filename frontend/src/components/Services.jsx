@@ -50,7 +50,7 @@ export default function Services() {
         <div className="grid lg:grid-cols-12 gap-8 items-end mb-16">
           <div className="lg:col-span-7">
             <div className="flex items-center gap-3 mb-5">
-              <span className="font-mono text-xs tracking-widest uppercase text-slate-500">§ 02</span>
+              <span className="font-mono text-xs tracking-widest uppercase text-slate-500">§ 04</span>
               <span className="h-px w-10 bg-slate-300" />
               <span className="font-mono text-xs tracking-widest uppercase text-slate-500">Services & pricing</span>
             </div>
