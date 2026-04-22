@@ -47,23 +47,26 @@ export default function BookingCalendar() {
     name: "", phone: "", email: "", address: "", service_type: "split_system", notes: "",
   });
 
-  // fetch availability when date changes
+  // fetch availability when date changes, plus poll every 20s for real-time updates
   useEffect(() => {
     const iso = toISODate(date);
     if (!iso) { setAvailability(null); return; }
     let cancelled = false;
-    (async () => {
-      setLoadingAvail(true);
+    let timer;
+    const fetchOnce = async (silent) => {
+      if (!silent) setLoadingAvail(true);
       try {
         const { data } = await axios.get(`${API}/bookings/availability`, { params: { date: iso } });
         if (!cancelled) setAvailability(data);
       } catch {
-        if (!cancelled) setAvailability(null);
+        if (!cancelled && !silent) setAvailability(null);
       } finally {
-        if (!cancelled) setLoadingAvail(false);
+        if (!cancelled && !silent) setLoadingAvail(false);
       }
-    })();
-    return () => { cancelled = true; };
+    };
+    fetchOnce(false);
+    timer = setInterval(() => fetchOnce(true), 20000);
+    return () => { cancelled = true; clearInterval(timer); };
   }, [date]);
 
   const submit = async (e) => {
@@ -115,8 +118,11 @@ export default function BookingCalendar() {
           className="text-center max-w-3xl mx-auto"
         >
           <div className="inline-flex items-center gap-2 rounded-full bg-white border border-sky-100 px-4 py-2 mb-5 shadow-sm">
-            <CalendarDays size={14} className="text-sky-600" />
-            <span className="text-xs font-bold tracking-widest uppercase text-sky-700">Online Booking</span>
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+            </span>
+            <span className="text-xs font-bold tracking-widest uppercase text-sky-700">Live availability</span>
           </div>
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter text-slate-900 leading-[1.05]">
             Pick a day. Pick a slot. <br /><span className="text-sky-500">We'll do the rest.</span>

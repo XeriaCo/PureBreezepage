@@ -136,11 +136,11 @@ export default function ScaryFacts() {
             </p>
           </div>
           <a
-            href="#ai-quote"
+            href="#book"
             className="inline-flex items-center justify-center rounded-full bg-white text-red-700 hover:bg-red-50 px-7 py-3.5 font-bold text-sm shadow-xl btn-lift whitespace-nowrap"
             data-testid="scary-cta-button"
           >
-            Scan My AC Now →
+            Book My Clean Now →
           </a>
         </motion.div>
       </div>

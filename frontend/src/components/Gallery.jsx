@@ -193,11 +193,11 @@ export default function Gallery() {
             <div className="mt-4 p-5 rounded-2xl bg-gradient-to-br from-sky-500 to-cyan-600 text-white">
               <div className="font-display text-2xl font-bold tracking-tight">Your AC could be next.</div>
               <a
-                href="#ai-quote"
+                href="#book"
                 className="mt-3 inline-flex items-center justify-center rounded-full bg-white text-sky-700 hover:bg-sky-50 px-5 py-2.5 text-sm font-bold btn-lift"
                 data-testid="gallery-cta-quote"
               >
-                Scan mine →
+                Book now →
               </a>
             </div>
           </div>

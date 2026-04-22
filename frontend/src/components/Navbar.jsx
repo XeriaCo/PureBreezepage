@@ -7,7 +7,6 @@ const NAV = [
   { label: "Services", href: "#services" },
   { label: "Danger Facts", href: "#danger" },
   { label: "Gallery", href: "#gallery" },
-  { label: "Quote", href: "#ai-quote" },
   { label: "Book", href: "#book" },
   { label: "Contact", href: "#contact" },
 ];
@@ -59,11 +58,11 @@ export default function Navbar() {
             0490 507 878
           </a>
           <Button
-            onClick={() => (window.location.hash = "ai-quote")}
+            onClick={() => (window.location.hash = "book")}
             className="rounded-full bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 shadow-lg shadow-sky-500/30 btn-lift"
             data-testid="nav-cta-quote"
           >
-            Get Quote
+            Book Now
           </Button>
         </div>
 
@@ -102,11 +101,11 @@ export default function Navbar() {
             Call 0490 507 878
           </a>
           <Button
-            onClick={() => { setOpen(false); window.location.hash = "ai-quote"; }}
+            onClick={() => { setOpen(false); window.location.hash = "book"; }}
             className="w-full rounded-full bg-sky-500 hover:bg-sky-600 text-white"
             data-testid="nav-mobile-cta"
           >
-            Get Quote
+            Book Now
           </Button>
         </div>
       )}

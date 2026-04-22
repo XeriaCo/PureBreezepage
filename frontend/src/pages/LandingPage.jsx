@@ -2,20 +2,16 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 
-// ---------- PROBLEM ----------
+// PROBLEM
 import ScaryFacts from "@/components/ScaryFacts";
-
-// ---------- SOLUTION ----------
+// SOLUTION
 import Benefits from "@/components/Benefits";
 import ProcessSteps from "@/components/ProcessSteps";
 import Gallery from "@/components/Gallery";
-
-// ---------- CONVERT ----------
-import AIQuote from "@/components/AIQuote";
-
-// ---------- SECONDARY ----------
-import Services from "@/components/Services";
+// CONVERT
 import BookingCalendar from "@/components/BookingCalendar";
+// SECONDARY
+import Services from "@/components/Services";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import StatsCounter from "@/components/StatsCounter";
 import Testimonials from "@/components/Testimonials";
@@ -25,9 +21,11 @@ import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
-// ---------- Chrome ----------
+// Chrome
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTop from "@/components/ScrollToTop";
+import ClickToCall from "@/components/ClickToCall";
+import LiveChat from "@/components/LiveChat";
 
 export default function LandingPage() {
   return (
@@ -37,21 +35,16 @@ export default function LandingPage() {
       <main>
         {/* 1. Hook */}
         <Hero />
-
         {/* 2. Problem */}
         <ScaryFacts />
-
         {/* 3. Solution */}
         <Benefits />
         <ProcessSteps />
         <Gallery />
-
-        {/* 4. Convert */}
-        <AIQuote />
-
-        {/* 5. Secondary info */}
-        <Services />
+        {/* 4. Convert — booking is now the primary CTA */}
         <BookingCalendar />
+        {/* 5. Secondary */}
+        <Services />
         <WhyChooseUs />
         <StatsCounter />
         <Testimonials />
@@ -61,7 +54,11 @@ export default function LandingPage() {
         <Contact />
       </main>
       <Footer />
+
+      {/* Floating utilities */}
       <ScrollToTop />
+      <ClickToCall />
+      <LiveChat />
     </div>
   );
 }

@@ -74,7 +74,7 @@ export default function Services() {
             const span = i === 0 ? "lg:col-span-7" : i === 1 ? "lg:col-span-5" : i === 2 ? "lg:col-span-5" : "lg:col-span-7";
             return (
               <motion.a
-                href="#ai-quote"
+                href="#book"
                 key={s.title}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -136,7 +136,7 @@ export default function Services() {
                       className="inline-flex items-center gap-1 text-sm font-semibold text-sky-600 group-hover:text-sky-700 hand-underline"
                       data-testid={`service-cta-${i}`}
                     >
-                      Get quote
+                      Book now
                     </span>
                     <span className="w-10 h-10 rounded-full bg-slate-100 group-hover:bg-sky-500 group-hover:text-white text-slate-700 flex items-center justify-center transition-colors">
                       <ArrowUpRight size={16} />

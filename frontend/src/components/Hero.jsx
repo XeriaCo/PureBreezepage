@@ -76,12 +76,12 @@ export default function Hero() {
             {/* CTA row */}
             <div className="mt-10 flex flex-wrap items-center gap-4" data-testid="hero-ctas">
               <Button
-                onClick={() => (window.location.hash = "ai-quote")}
+                onClick={() => (window.location.hash = "book")}
                 className="group rounded-full bg-slate-900 hover:bg-slate-800 text-white pl-6 pr-3 py-6 text-base font-semibold btn-lift"
                 data-testid="hero-cta-quote"
               >
                 <Sparkles size={16} className="mr-2 text-sky-400" />
-                Get an instant quote
+                Book a clean now
                 <span className="ml-3 w-9 h-9 rounded-full bg-sky-500 group-hover:bg-sky-400 flex items-center justify-center transition-colors">
                   <ArrowUpRight size={16} />
                 </span>

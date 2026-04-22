@@ -1,0 +1,51 @@
+{
+  "summary": "Tested admin console, Wingman stubs, and live-chat features end-to-end. Added /app/backend/tests/test_admin_wingman_chat.py with 32 tests covering admin login (success/wrong pw/me endpoint), auth guards on all 8 admin/Wingman GET endpoints (unauthed 401, authed 200), stats shape, booking PATCH flow (status-update+persist+invalid status 400 + unknown id 404), Wingman webhooks (unauthenticated POST + authenticated GET for leads/research/competitors), chat message end-to-end (Gemini 3 Flash reply, conversation continuity, admin conversation list + messages chronological), and regression (/, /bookings, /contact, /bookings/availability). All 32 tests PASS. Also ran a Playwright flow against the external preview URL verifying: (a) #ai-quote REMOVED from public site, (b) click-to-call button with href='tel:0490507878', (c) live-chat-toggle opens live-chat-panel, (d) navbar Book Now CTA (no 'Quote' link), (e) 'Live availability' badge in booking section, (f) /admin redirects to /admin/login without token, (g) wrong password shows 'Incorrect', (h) correct password '1302' stores token as pb_admin_token and redirects to /admin, (i) Overview tiles match /api/admin/stats values, (j) Wingman webhook URLs visible on dashboard. Found ONE real backend bug: brute-force lockout is not triggering behind the K8s ingress because request.client.host is the ingress pod IP which rotates per request — only 2 of 5 failed attempts landed on the same IP, so the 5-attempt threshold never fires.",
+  "backend_issues": {
+    "critical": [
+      {"endpoint": "POST /api/admin/login", "issue": "Brute-force lockout does NOT trigger in production/preview. request.client.host resolves to the ingress pod IP which rotates across requests. Verified: 5 wrong-password attempts from one external client produced 5×401 responses, and the 6th wrong attempt ALSO returned 401 (should be 429); db.login_attempts showed only 2 attempts on one IP because the rest were spread across other proxy IPs. Mitigation: read X-Forwarded-For (take the left-most IP) or X-Real-IP with fallback to request.client.host. Given the password is only 4 digits, this is HIGH priority.", "priority": "HIGH"}
+    ],
+    "minor": [
+      {"endpoint": "PATCH /api/admin/bookings/{id}", "issue": "Accepts valid statuses but does not guarantee atomic write under concurrency (inherited from iteration 2 note)."},
+      {"endpoint": "POST /api/wingman/leads|research|competitors", "issue": "Webhooks are fully unauthenticated. Fine for MVP per requirements, but once Wingman is live consider an X-Wingman-Token header check."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {"flow": "Live chat send", "issue": "data-testid='live-chat-send' not found on the send button (the panel opens and input works, but automated send-click could not locate the submit control). Verify the send button exposes data-testid='live-chat-send' for stable automation. Backend chat endpoint itself works (pytest passes).", "affected_selectors": ["[data-testid=\"live-chat-send\"]"]}
+    ],
+    "design_issues": [
+      {"screen": "Public FAQ section", "issues": ["An FAQ item still reads 'How accurate is the AI quote?' — AI Quote feature has been removed from the site, so this FAQ is now stale and should be updated or deleted."]},
+      {"screen": "Admin Dashboard Overview tiles", "issues": ["Stat tiles lack data-testid='stat-<key>' attributes (found 0). Values render correctly, but adding testids would improve test coverage."]},
+      {"screen": "Admin sidebar Wingman items", "issues": ["data-testids for Wingman nav buttons (nav-wingman-leads/research/competitors) were not found — they may be named differently. Visible labels work. Non-blocking."]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_admin_wingman_chat.py",
+    "/app/backend/tests/test_purebreeze_api.py",
+    "/app/test_reports/pytest/pytest_admin.xml"
+  ],
+  "action_items": [
+    "FIX HIGH: In /app/backend/server.py admin_login, derive client IP from X-Forwarded-For header (left-most) with fallback to request.client.host. Otherwise 4-digit password '1302' is effectively brute-forceable from the internet.",
+    "Remove or rewrite FAQ item 'How accurate is the AI quote?' on public site — the AI Quote feature was removed.",
+    "Add data-testid='live-chat-send' to the chat submit button for stable E2E testing.",
+    "(Optional) Add data-testid='stat-<key>' to Overview tiles and data-testid='nav-wingman-*' to sidebar Wingman buttons for better testability."
+  ],
+  "critical_code_review_comments": [
+    "server.py line 434: ip = request.client.host — unreliable behind ingress/proxy. Must use X-Forwarded-For to make brute-force protection effective.",
+    "server.py line 34: ADMIN_PASSWORD_HASH = bcrypt.hashpw(...) is computed ONCE at module import using the env value. Correct, but note: if ADMIN_PASSWORD env changes, the server must be restarted (expected behavior; just calling it out).",
+    "server.py chat endpoint: every user message opens a new LlmChat session keyed by conversation_id — this means prior turns are NOT fed back to Gemini. The assistant has no memory of earlier messages in the same conversation beyond what the provider may cache by session_id. Consider fetching prior messages and including them in UserMessage or using chat_history.",
+    "server.py: Wingman POST endpoints accept a full WingmanLead including an 'id' field from the client. A client could overwrite/fake ids. Minor; consider reassigning id server-side.",
+    "server.py booking_availability: no check that the date is not far in the past (matches iter-2 observation)."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_admin_wingman_chat.py (new)"
+  ],
+  "success_rate": {"backend": "100% (32/32 pytest passes, plus 1 discovered runtime bug in brute-force lockout not caught by tests because all pytest requests share the same rotating proxy pool)", "frontend": "~95% (all key selectors and flows verified; minor testability gaps for live-chat-send + a few nav testids)"},
+  "test_credentials": "Admin password: 1302 (from /app/memory/test_credentials.md)",
+  "seed_data_creation": "Booking records on 2031-01-05, 2031-01-06, 2031-02-02 (TEST_ prefixed); Wingman lead/research/competitor entries prefixed TEST_W*; chat conversations from 'Hi, how much for a split system clean?' test — all prefixed TEST_ where applicable.",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Backend test suite split into two files: test_purebreeze_api.py (public endpoints — health, LLM quote, contact, bookings, leads) and test_admin_wingman_chat.py (admin auth, Wingman, chat, patch flow, regressions). Admin password is 1302 stored in backend/.env as ADMIN_PASSWORD. Token in localStorage key pb_admin_token. Brute-force lockout test is intentionally NOT in pytest because (a) it would pollute the login_attempts collection and cascade-fail other tests, (b) it requires the real-client-IP fix to work at all. To manually retest lockout after fix: run `mongosh test_database --eval 'db.login_attempts.deleteMany({})'` then 5x POST /api/admin/login with wrong password from a single external client; 6th must return 429. Frontend URL: https://aircon-quote-now.preview.emergentagent.com.",
+  "rca of the issue": "Brute-force RCA: FastAPI's request.client.host returns the TCP peer address. In a K8s deployment behind an nginx/ingress controller with multiple proxy pods, the peer is the ingress pod, NOT the real client. The ingress rotates connections across pods, so 5 consecutive requests from the same real browser produce up to 5 different server-perceived ips. With count-per-ip logic, the 5-attempt threshold is almost never reached. Reproduction: `mongosh test_database --eval 'db.login_attempts.deleteMany({})'` then `for i in 0..4 curl POST /api/admin/login { password:'bad' }`; observe db.login_attempts has fewer than 5 total across 1+ IP records. Fix: `ip = (request.headers.get('x-forwarded-for') or request.client.host).split(',')[0].strip()`. After fix, run the retest steps above."
+}
