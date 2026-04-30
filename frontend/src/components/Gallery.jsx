@@ -4,9 +4,15 @@ import { ArrowLeftRight, Sparkles } from "lucide-react";
 
 const PAIRS = [
   {
+    id: "p0",
+    label: "Split System · Brisbane",
+    before: "https://images.pexels.com/photos/7031717/pexels-photo-7031717.jpeg",
+    after: "https://customer-assets.emergentagent.com/wingman/05384f0b-dfa0-4afe-82d6-378d7ff1884b/attachments/0808184a9835460596de01d427a6829f_IMG_2554.jpeg",
+  },
+  {
     id: "p1",
     label: "Ducted Return · Brisbane",
-    before: "https://static.prod-images.emergentagent.com/jobs/b709f5ab-53d0-4ea5-b4b8-9d180465e97f/images/0d662876af8c568d48d6c53e9a756f60034076d3c543224f5eae53618964224d.png",
+    before: "https://static.prod-images.emergentagent.com/jobs/b709f5ab-53d0-4ea5-b4b8-9d180465e97f/images/0d662876af8c568d48d6c53e9a756f60340763c543224f5eae53618964224d.png",
     after: "https://static.prod-images.emergentagent.com/jobs/b709f5ab-53d0-4ea5-b4b8-9d180465e97f/images/92a2813178e78b5d984a568c8656e0b699106225dacea72c8bca9f4819eb04eb.png",
   },
   {
