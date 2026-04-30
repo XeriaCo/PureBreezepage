@@ -39,7 +39,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7 relative"
           >
-            {/* corner handwriting annotation */}
+            {/* corner handwriting annotation */~
             <div className="hidden md:block absolute -top-4 right-8 text-sky-500 handwriting text-2xl rotate-[-6deg] select-none">
               read on →
             </div>
@@ -136,7 +136,7 @@ export default function Hero() {
             {/* main photo */}
             <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-[0_40px_80px_-30px_rgba(15,23,42,0.4)]">
               <img
-                src="https://images.pexels.com/photos/6471913/pexels-photo-6471913.jpeg"
+                src="https://customer-assets.emergentagent.com/wingman/05384f0b-dfa0-4afe-82d6-378d7ff1884b/attachments/0808184a9835460596de01d427a6829f_IMG_2554.jpeg"
                 alt="PureBreeze HVAC technician servicing an air conditioner"
                 className="absolute inset-0 w-full h-full object-cover"
               />
