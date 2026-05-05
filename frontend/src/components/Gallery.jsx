@@ -39,6 +39,12 @@ const PAIRS = [
     before: "https://images.pexels.com/photos/7031717/pexels-photo-7031717.jpeg",
     after: "https://images.pexels.com/photos/5824517/pexels-photo-5824517.jpeg",
   },
+  {
+    id: "p6",
+    label: "Split System Filter · Yatala",
+    before: "https://customer-assets.emergentagent.com/wingman/05384f0b-dfa0-4afe-82d6-378d7ff1884b/attachments/26227b8665724128a113d07e6005d540_IMG_2603.jpeg",
+    after: "https://customer-assets.emergentagent.com/wingman/05384f0b-dfa0-4afe-82d6-378d7ff1884b/attachments/b2c554b5006b47c093a38ee6879e6f3b_IMG_2594.jpeg",
+  },
 ];
 
 function ComparisonSlider({ before, after, label, testId }) {
