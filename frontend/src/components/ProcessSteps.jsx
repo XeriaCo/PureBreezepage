@@ -39,6 +39,10 @@ const PHOTOS = [
     src: "https://customer-assets.emergentagent.com/wingman/05384f0b-dfa0-4afe-82d6-378d7ff1884b/attachments/077b3fc60c854fa98080d58f4f442ac5_IMG_2604.jpeg",
     alt: "Meticulous strip-down and cleaning process",
   },
+  {
+    src: "https://customer-assets.emergentagent.com/wingman/05384f0b-dfa0-4afe-82d6-378d7ff1884b/attachments/02cdb14a90434244877b2365b1759d1e_IMG_2605.jpeg",
+    alt: "Internal coil cleaning with protective wall-bag setup",
+  },
 ];
 
 export default function ProcessSteps() {
@@ -69,7 +73,7 @@ export default function ProcessSteps() {
                   <img
                     src={p.src}
                     alt={p.alt}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:sscale-110"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
