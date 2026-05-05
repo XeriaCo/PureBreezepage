@@ -31,6 +31,14 @@ const PHOTOS = [
     alt: "Split system install",
     className: "col-span-2",
   },
+  {
+    src: "https://customer-assets.emergentagent.com/wingman/05384f0b-dfa0-4afe-82d6-378d7ff1884b/attachments/380d01f5ca9b4284a3422cf2e914a624_IMG_2601.jpeg",
+    alt: "PureBreeze cleaning equipment and stripped unit",
+  },
+  {
+    src: "https://customer-assets.emergentagent.com/wingman/05384f0b-dfa0-4afe-82d6-378d7ff1884b/attachments/077b3fc60c854fa98080d58f4f442ac5_IMG_2604.jpeg",
+    alt: "Meticulous strip-down and cleaning process",
+  },
 ];
 
 export default function ProcessSteps() {
