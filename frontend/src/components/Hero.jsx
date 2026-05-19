@@ -39,7 +39,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7 relative"
           >
-            {/* corner handwriting annotation */~
+            {/* corner handwriting annotation */}
             <div className="hidden md:block absolute -top-4 right-8 text-sky-500 handwriting text-2xl rotate-[-6deg] select-none">
               read on →
             </div>
