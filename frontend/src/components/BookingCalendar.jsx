@@ -87,7 +87,7 @@ export default function BookingCalendar() {
       });
       navigate("/thank-you", { state: { kind: "booking", reference: data?.id, name: form.name, phone: form.phone, booking_date: toISODate(date), time_slot: slot } });
     } catch (err) {
-      const msg = err?.response?.data?.detail || "Couldn't book right now. Please call 0490 507 878.";
+      const msg = err?.response?.data?.detail || "Couldn't book right now. Please call 0490 205 298.";
       toast.error(msg);
     } finally {
       setSubmitting(false);

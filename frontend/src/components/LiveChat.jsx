@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
-const GREETING = "Hi — I'm your PureBreeze assistant. Ask about services, pricing or availability, or call 0490 507 878.";
+const GREETING = "Hi — I'm your PureBreeze assistant. Ask about services, pricing or availability, or call 0490 205 298.";
 function uid() { return Math.random().toString(36).slice(2, 10); }
 
 export default function LiveChat() {
@@ -32,7 +32,7 @@ export default function LiveChat() {
       setConvoId(data.conversation_id);
       setMessages((prev) => [...prev, { id: uid(), role: "assistant", text: data.assistant_message }]);
     } catch {
-      setMessages((prev) => [...prev, { id: uid(), role: "assistant", text: "I'm offline for a moment — please call 0490 507 878 or we'll reply soon." }]);
+      setMessages((prev) => [...prev, { id: uid(), role: "assistant", text: "I'm offline for a moment — please call 0490 205 298 or we'll reply soon." }]);
     } finally { setSending(false); }
   };
 

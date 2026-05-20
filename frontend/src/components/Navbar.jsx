@@ -3,12 +3,11 @@ import { PureBreezeLogo } from "@/components/PureBreezeLogo";
 import { Menu, X } from "lucide-react";
 
 const NAV = [
-  { label: "Dangers",  href: "#danger"   },
-  { label: "Benefits", href: "#benefits" },
   { label: "Services", href: "#services" },
-  { label: "Process",  href: "#process"  },
-  { label: "Gallery",  href: "#gallery"  },
-  { label: "About",    href: "#about"    },
+  { label: "How it works", href: "#process" },
+  { label: "Book",     href: "#book"     },
+  { label: "Reviews",  href: "#reviews"  },
+  { label: "Contact",  href: "#contact"  },
 ];
 
 export default function Navbar() {
@@ -92,8 +91,8 @@ export default function Navbar() {
             </a>
           ))}
           <div className="divider-hair my-5" />
-          <a href="tel:0490507878" className="block text-base font-medium text-[#1F5AA8]" data-testid="nav-mobile-phone">
-            0490 507 878
+          <a href="tel:0490205298" className="block text-base font-medium text-[#1F5AA8]" data-testid="nav-mobile-phone">
+            0490 205 298
           </a>
           <a
             href="#book"

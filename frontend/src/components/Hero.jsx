@@ -23,22 +23,7 @@ export default function Hero() {
 
       <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10 relative">
 
-        {/* Eyebrow line */}
-        <motion.div
-          initial={{ opacity: 0, y: -4 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-10 flex items-center gap-4"
-          data-testid="hero-lockup"
-        >
-          <PureBreezeLogo size={22} />
-          <span className="w-8 h-px bg-[#DCE7F3]" />
-          <span className="eyebrow-light text-[#5A6B82]">
-            Queensland · Est. 2019 · 4,200 cleans
-          </span>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
+                <div className="grid lg:grid-cols-12 gap-12 items-start">
 
           {/* LEFT — Headline + CTA */}
           <motion.div
@@ -68,12 +53,12 @@ export default function Hero() {
                 Book your clean <span className="ml-2">→</span>
               </a>
               <a
-                href="tel:0490507878"
+                href="tel:0490205298"
                 className="flex items-center gap-2.5 text-sm text-[#0A2A4E] font-medium link-underline"
                 data-testid="hero-cta-call"
               >
                 <Phone size={14} strokeWidth={1.6} />
-                0490 507 878
+                0490 205 298
               </a>
             </div>
           </motion.div>

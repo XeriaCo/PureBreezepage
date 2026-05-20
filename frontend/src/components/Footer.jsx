@@ -15,19 +15,9 @@ const COLS = [
   {
     title: "Company",
     items: [
-      { label: "About Us",   href: "#about"   },
+      { label: "About",      href: "#top"     },
       { label: "Our Process",href: "#process" },
-      { label: "Gallery",    href: "#gallery" },
       { label: "Contact Us", href: "#contact" },
-    ],
-  },
-  {
-    title: "Resources",
-    items: [
-      { label: "Dangers of Dirty Air", href: "#danger"   },
-      { label: "Benefits of Clean Air",href: "#benefits" },
-      { label: "FAQs",                 href: "#faq"      },
-      { label: "Care Tips",            href: "#about"    },
     ],
   },
 ];
@@ -80,9 +70,9 @@ export default function Footer() {
             <div className="text-[11px] uppercase tracking-[0.24em] text-[#0A2A4E] font-medium mb-5">Contact</div>
             <ul className="space-y-3">
               <li>
-                <a href="tel:0490507878" className="flex items-center gap-2.5 text-[13px] text-[#5A6B82] hover:text-[#1F5AA8] font-light" data-testid="footer-phone">
+                <a href="tel:0490205298" className="flex items-center gap-2.5 text-[13px] text-[#5A6B82] hover:text-[#1F5AA8] font-light" data-testid="footer-phone">
                   <Phone size={13} strokeWidth={1.5} className="text-[#1F5AA8]" />
-                  0490 507 878
+                  0490 205 298
                 </a>
               </li>
               <li>

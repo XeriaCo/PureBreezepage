@@ -5,8 +5,8 @@ import { Phone, ArrowLeft, CheckCircle2, Clock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const PHONE_DIGITS  = "0490507878";
-const PHONE_DISPLAY = "0490 507 878";
+const PHONE_DIGITS  = "0490205298";
+const PHONE_DISPLAY = "0490 205 298";
 
 export default function CallRequested() {
   const [dialed, setDialed] = useState(false);

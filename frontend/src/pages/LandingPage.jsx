@@ -2,22 +2,14 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 
-// MOCKUP CORE
-import Benefits from "@/components/Benefits";
-import ProcessSteps from "@/components/ProcessSteps";
-import BreatheDifference from "@/components/BreatheDifference";
-import TrustedQueensland from "@/components/TrustedQueensland";
-import BeforeAfter from "@/components/BeforeAfter";
-import CtaBanner from "@/components/CtaBanner";
-
-// SUPPORTING
+// CORE — services + booking + contact prioritised
 import Services from "@/components/Services";
+import ProcessSteps from "@/components/ProcessSteps";
 import BookingCalendar from "@/components/BookingCalendar";
+import BeforeAfter from "@/components/BeforeAfter";
 import ScaryFacts from "@/components/ScaryFacts";
-import WhyChooseUs from "@/components/WhyChooseUs";
+import CtaBanner from "@/components/CtaBanner";
 import Testimonials from "@/components/Testimonials";
-import FoundersNote from "@/components/FoundersNote";
-import SuburbsMarquee from "@/components/SuburbsMarquee";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -34,23 +26,14 @@ export default function LandingPage() {
       <ScrollProgress />
       <Navbar />
       <main>
-        {/* Mockup-aligned flow */}
         <Hero />
-        <Benefits />
-        <ProcessSteps />
-        <BreatheDifference />
-        <TrustedQueensland />
-        <BeforeAfter />
-        <CtaBanner />
-
-        {/* Supporting sections */}
         <Services />
+        <ProcessSteps />
         <BookingCalendar />
+        <BeforeAfter />
         <ScaryFacts />
-        <WhyChooseUs />
+        <CtaBanner />
         <Testimonials />
-        <FoundersNote />
-        <SuburbsMarquee />
         <FAQ />
         <Contact />
       </main>

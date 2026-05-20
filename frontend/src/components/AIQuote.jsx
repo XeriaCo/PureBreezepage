@@ -101,7 +101,7 @@ export default function AIQuote() {
       }, 150);
     } catch (err) {
       console.error(err);
-      toast.error("Sorry, something went wrong. Please call 0490 507 878.");
+      toast.error("Sorry, something went wrong. Please call 0490 205 298.");
     } finally {
       setLoading(false);
     }
@@ -429,11 +429,11 @@ export default function AIQuote() {
 
                 <div className="mt-7 flex flex-col sm:flex-row gap-3">
                   <Button
-                    onClick={() => (window.location.href = "tel:0490507878")}
+                    onClick={() => (window.location.href = "tel:0490205298")}
                     className="flex-1 rounded-full bg-sky-500 hover:bg-sky-600 text-white py-5 font-semibold shadow-lg shadow-sky-500/30 btn-lift"
                     data-testid="quote-book-call"
                   >
-                    Book by phone · 0490 507 878
+                    Book by phone · 0490 205 298
                   </Button>
                   <Button
                     variant="outline"

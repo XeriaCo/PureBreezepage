@@ -27,7 +27,7 @@ export default function Contact() {
       setForm({ name: "", phone: "", email: "", service_type: "", suburb: "", message: "" });
       navigate("/contact-received", { state: { kind: "contact", reference: data?.id, name: form.name, phone: form.phone } });
     } catch {
-      toast.error("Sorry, something went wrong. Please call 0490 507 878.");
+      toast.error("Sorry, something went wrong. Please call 0490 205 298.");
     } finally { setLoading(false); }
   };
 
@@ -51,13 +51,13 @@ export default function Contact() {
             </p>
 
             <div className="mt-10 space-y-4">
-              <a href="tel:0490507878" className="flex items-center gap-4 p-5 rounded-2xl bg-white hairline shadow-card btn-lift" data-testid="contact-phone">
+              <a href="tel:0490205298" className="flex items-center gap-4 p-5 rounded-2xl bg-white hairline shadow-card btn-lift" data-testid="contact-phone">
                 <div className="w-11 h-11 rounded-full bg-[#F2F7FD] flex items-center justify-center text-[#1F5AA8]">
                   <Phone size={16} strokeWidth={1.5} />
                 </div>
                 <div>
                   <div className="text-[10px] uppercase tracking-[0.24em] text-[#8597AE] font-medium">Telephone</div>
-                  <div className="font-display text-base text-[#0A2A4E] font-medium mt-1">0490 507 878</div>
+                  <div className="font-display text-base text-[#0A2A4E] font-medium mt-1">0490 205 298</div>
                 </div>
               </a>
 

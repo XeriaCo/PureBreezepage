@@ -108,12 +108,12 @@ export default function ThankYou() {
               <div className="eyebrow-light mb-4">In the meantime</div>
               <div className="grid sm:grid-cols-2 gap-3 max-w-md mx-auto">
                 <a
-                  href="tel:0490507878"
+                  href="tel:0490205298"
                   className="flex items-center justify-center gap-2 pill pill-navy btn-lift"
                   data-testid="thankyou-call"
                 >
                   <Phone size={14} strokeWidth={1.5} />
-                  0490 507 878
+                  0490 205 298
                 </a>
                 <a
                   href="mailto:hello@purebreeze.com.au"

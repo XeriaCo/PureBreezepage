@@ -45,12 +45,12 @@ export default function CtaBanner() {
                 Book your clean <span className="ml-1.5">→</span>
               </a>
               <a
-                href="tel:0490507878"
+                href="tel:0490205298"
                 className="flex items-center justify-center gap-2.5 text-white text-sm font-medium hover:text-[#DDE9F7] transition-colors px-4"
                 data-testid="cta-banner-call"
               >
                 <Phone size={14} strokeWidth={1.5} />
-                0490 507 878
+                0490 205 298
               </a>
             </div>
           </div>
