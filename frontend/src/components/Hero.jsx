@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Phone, CheckCircle2 } from "lucide-react";
+import { PureBreezeLogo } from "@/components/PureBreezeLogo";
 
 export default function Hero() {
   return (
@@ -27,8 +28,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: -4 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-10"
+          className="mb-10 flex items-center gap-4"
+          data-testid="hero-lockup"
         >
+          <PureBreezeLogo size={22} />
+          <span className="w-8 h-px bg-[#DCE7F3]" />
           <span className="eyebrow-light text-[#5A6B82]">
             Queensland · Est. 2019 · 4,200 cleans
           </span>

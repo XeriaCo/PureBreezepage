@@ -33,9 +33,9 @@ export default function Navbar() {
       <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10 h-20 grid grid-cols-3 items-center">
 
         {/* Logo */}
-        <a href="#top" className="flex items-center gap-2" data-testid="nav-logo-link">
-          <PureBreezeLogo size={28} />
-          <span className="font-display text-lg text-[#0A2A4E] font-medium tracking-tight">PureBreeze</span>
+        <a href="#top" className="flex items-center gap-2.5" data-testid="nav-logo-link">
+          <PureBreezeLogo size={34} />
+          <span className="font-display text-[15px] text-[#0A2A4E] font-medium tracking-[0.18em] uppercase">PureBreeze</span>
         </a>
 
         {/* Centred nav */}

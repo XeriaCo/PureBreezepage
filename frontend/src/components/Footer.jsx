@@ -41,9 +41,8 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="col-span-2 md:col-span-2">
-            <a href="#top" className="flex items-center gap-2 mb-5">
-              <PureBreezeLogo size={26} />
-              <span className="font-display text-lg text-[#0A2A4E] font-medium tracking-tight">PureBreeze</span>
+            <a href="#top" className="inline-block mb-5">
+              <PureBreezeLogo size={44} showWordmark showTagline />
             </a>
             <p className="text-[13px] text-[#5A6B82] leading-[1.7] font-light max-w-xs">
               Hospital-grade air cleaning for homes and businesses across

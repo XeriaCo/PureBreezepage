@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Wind, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
+import { PureBreezeLogo } from "@/components/PureBreezeLogo";
 
 export default function CtaBanner() {
   return (
@@ -22,8 +23,8 @@ export default function CtaBanner() {
 
           <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="flex items-center gap-5">
-              <div className="hidden sm:flex w-16 h-16 rounded-full bg-white/15 border border-white/20 items-center justify-center text-white">
-                <Wind size={24} strokeWidth={1.4} />
+              <div className="hidden sm:flex w-16 h-16 rounded-full bg-white/15 border border-white/20 items-center justify-center">
+                <PureBreezeLogo size={36} variant="dark" />
               </div>
               <div>
                 <h3 className="font-display text-2xl sm:text-3xl text-white font-medium tracking-tight">
