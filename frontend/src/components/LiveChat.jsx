@@ -56,8 +56,8 @@ export default function LiveChat() {
         onClick={() => setOpen((o) => !o)}
         aria-label="Open live chat"
         data-testid="live-chat-toggle"
-        className={`fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full flex items-center justify-center shadow-[0_12px_30px_rgba(14,165,233,0.4)] transition-all ${
-          open ? "bg-slate-900 hover:bg-slate-800" : "bg-gradient-to-br from-sky-500 to-cyan-500 hover:scale-105"
+        className={`fixed bottom-6 right-6 z-40 w-14 h-14 flex items-center justify-center shadow-luxe-lg transition-all ${
+          open ? "bg-[#1F5AA8] hover:bg-[#0A2A4E]" : "bg-[#0A2A4E] hover:bg-[#061A33]"
         }`}
       >
         {open ? <X size={22} className="text-white" /> : <MessageCircle size={22} className="text-white" />}
@@ -70,19 +70,19 @@ export default function LiveChat() {
           open ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-90 pointer-events-none"
         }`}
       >
-        <div className="rounded-3xl bg-white border border-sky-100 shadow-[0_30px_70px_-20px_rgba(15,23,42,0.3)] overflow-hidden">
+        <div className="bg-white hairline shadow-luxe-lg overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-br from-sky-500 to-cyan-500 px-5 py-4 text-white">
+          <div className="bg-[#0A2A4E] px-6 py-5 text-white">
             <div className="flex items-center gap-2">
               <div className="relative">
-                <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-white" />
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-none bg-emerald-400 border-2 border-white" />
+                <div className="w-10 h-10 rounded-none bg-white/20 flex items-center justify-center">
                   <Sparkles size={18} />
                 </div>
               </div>
               <div className="leading-tight">
-                <div className="font-display font-bold text-base tracking-tight">PureBreeze Assistant</div>
-                <div className="text-[11px] text-sky-100">Online · replies in seconds</div>
+                <div className="font-display font-normal text-base tracking-tight">PureBreeze Assistant</div>
+                <div className="text-[11px] text-white/60">Online · replies in seconds</div>
               </div>
             </div>
           </div>
@@ -90,15 +90,15 @@ export default function LiveChat() {
           {/* Messages */}
           <div
             ref={scrollerRef}
-            className="h-[360px] overflow-y-auto p-4 space-y-3 bg-gradient-to-b from-white to-sky-50/50"
+            className="h-[360px] overflow-y-auto p-4 space-y-3 bg-[#FAFBFD]"
           >
             {messages.map((m) => (
               <div key={m.id} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div
                   className={`max-w-[80%] rounded-2xl px-3.5 py-2 text-sm leading-snug ${
                     m.role === "user"
-                      ? "bg-sky-500 text-white rounded-br-md"
-                      : "bg-white border border-slate-200 text-slate-800 rounded-bl-md"
+                      ? "bg-[#0A2A4E] text-white rounded-br-none"
+                      : "bg-white hairline text-[#0A2A4E] rounded-bl-none"
                   }`}
                   data-testid={`chat-msg-${m.role}`}
                 >
@@ -108,11 +108,11 @@ export default function LiveChat() {
             ))}
             {sending && (
               <div className="flex justify-start">
-                <div className="bg-white border border-slate-200 rounded-2xl rounded-bl-md px-3.5 py-2 text-sm text-slate-500">
+                <div className="bg-white hairline rounded-2xl rounded-bl-none px-3.5 py-2 text-sm text-slate-500">
                   <span className="inline-flex gap-1">
-                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: "120ms" }} />
-                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: "240ms" }} />
+                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-none animate-bounce" style={{ animationDelay: "0ms" }} />
+                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-none animate-bounce" style={{ animationDelay: "120ms" }} />
+                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-none animate-bounce" style={{ animationDelay: "240ms" }} />
                   </span>
                 </div>
               </div>
@@ -125,13 +125,13 @@ export default function LiveChat() {
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder="Type a message…"
-              className="rounded-full"
+              className="rounded-none"
               data-testid="chat-input"
             />
             <Button
               type="submit"
               disabled={!text.trim() || sending}
-              className="rounded-full bg-sky-500 hover:bg-sky-600 w-10 h-10 p-0 flex items-center justify-center"
+              className="rounded-none bg-[#0A2A4E] hover:bg-[#061A33] w-10 h-10 p-0 flex items-center justify-center"
               data-testid="live-chat-send"
             >
               <Send size={16} />

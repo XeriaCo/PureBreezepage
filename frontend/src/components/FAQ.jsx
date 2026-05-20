@@ -5,52 +5,56 @@ import {
 } from "@/components/ui/accordion";
 
 const FAQS = [
-  { q: "How often should I get my AC cleaned?",
-    a: "At minimum every 12 months for residential split systems in Queensland's humid climate. Homes with pets, allergies, or coastal salt air should consider every 6 months." },
-  { q: "How long does a clean take?",
-    a: "A standard split system takes 45–75 minutes. Ducted systems take 2–4 hours depending on size. We always give you an exact window before arriving." },
+  { q: "How often should I have my system cleaned?",
+    a: "At minimum every twelve months for residential split systems in Queensland's humid climate. Homes with pets, allergies, or coastal salt air benefit from a six-month interval." },
+  { q: "How long does a service take?",
+    a: "A standard split system takes 45–75 minutes. Ducted systems require two to four hours depending on size. We confirm an exact window before arriving." },
   { q: "Do you service my area?",
     a: "Yes — we cover all of South-East Queensland including Brisbane, Gold Coast, Sunshine Coast, Toowoomba, Ipswich, Logan, Redlands and surrounding suburbs." },
-  { q: "Are your chemicals safe for kids and pets?",
-    a: "Absolutely. We use hospital-grade, biodegradable sanitisers that are non-toxic once dry. The area is safe to re-enter immediately after cleaning." },
-  { q: "What if my unit has a problem you can't fix?",
-    a: "We'll identify it, explain it in plain English, and only charge for the clean. We never upsell repairs you don't need." },
-  { q: "How soon can you come out?",
-    a: "Same-day bookings across all of South-East Queensland if you book before midday. Morning (7-11am), midday (11am-2pm) and afternoon (2-5pm) slots are visible live on our booking calendar." },
+  { q: "Are the chemicals safe for children and pets?",
+    a: "Absolutely. We use hospital-grade, biodegradable sanitisers that are non-toxic once dry. The room is safe to re-enter immediately after service." },
+  { q: "What if there's an issue you cannot resolve?",
+    a: "We'll identify it, explain it in plain language, and charge only for the service. We never recommend repairs that aren't necessary." },
+  { q: "How soon can you arrive?",
+    a: "Same-day bookings across South-East Queensland if reserved before midday. Live morning, midday and afternoon slots are visible on our calendar." },
 ];
 
 export default function FAQ() {
   return (
-    <section className="relative py-24 lg:py-32 bg-sky-50" data-testid="faq-section">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-32 lg:py-40 bg-white" data-testid="faq-section">
+      <div className="max-w-[1000px] mx-auto px-6 sm:px-8 lg:px-12">
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
+          transition={{ duration: 0.7 }}
+          className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 rounded-full bg-white border border-sky-100 px-4 py-2 mb-5 shadow-sm">
-            <span className="w-1.5 h-1.5 bg-sky-500 rounded-full" />
-            <span className="text-xs font-bold tracking-widest uppercase text-sky-700">FAQ</span>
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <span className="w-12 h-px bg-[#1F5AA8]" />
+            <span className="eyebrow">Frequently Asked</span>
+            <span className="w-12 h-px bg-[#1F5AA8]" />
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tighter text-slate-900 leading-[1.05]">
-            Questions? <span className="text-sky-500">We've got answers.</span>
+          <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl font-light text-[#0A2A4E] leading-[1.0] tracking-tight">
+            Questions,
+            <br />
+            <span className="serif-italic text-[#1F5AA8]">considered.</span>
           </h2>
         </motion.div>
 
-        <Accordion type="single" collapsible className="mt-12 space-y-3">
+        <Accordion type="single" collapsible className="mt-12 space-y-0">
           {FAQS.map((f, i) => (
             <AccordionItem
               key={i}
               value={`item-${i}`}
-              className="rounded-2xl bg-white border border-sky-100 px-5 data-[state=open]:shadow-md"
+              className="border-t border-[#E5ECF4] last:border-b"
               data-testid={`faq-item-${i}`}
             >
-              <AccordionTrigger className="text-left font-display text-base sm:text-lg font-semibold text-slate-900 hover:no-underline py-5">
+              <AccordionTrigger className="text-left font-display text-xl sm:text-2xl text-[#0A2A4E] hover:no-underline hover:text-[#1F5AA8] transition-colors py-8 font-normal tracking-tight">
                 {f.q}
               </AccordionTrigger>
-              <AccordionContent className="text-slate-600 text-sm sm:text-base leading-relaxed pb-5">
+              <AccordionContent className="text-[#5A6B82] text-base sm:text-lg leading-[1.75] pb-8 font-light max-w-[60ch]">
                 {f.a}
               </AccordionContent>
             </AccordionItem>

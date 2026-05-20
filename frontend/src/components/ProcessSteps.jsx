@@ -1,132 +1,97 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Camera, Wrench, SprayCan, Droplets, ShieldCheck, Wind, ClipboardCheck } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 
 const STEPS = [
-  { icon: <Camera size={20} />,         title: "1. Inspect & photograph",   body: "We document before photos and identify mould, dust and wear." },
-  { icon: <Wrench size={20} />,         title: "2. Strip & protect",         body: "Panels removed, room protected with drop sheets and bags." },
-  { icon: <SprayCan size={20} />,       title: "3. Chemical coil treatment", body: "Hospital-grade enzymes break down biofilm, mould and grime." },
-  { icon: <Droplets size={20} />,       title: "4. Pressure rinse",          body: "Fins rinsed clean to restore maximum heat exchange." },
-  { icon: <ShieldCheck size={20} />,    title: "5. Sanitise & deodorise",    body: "Anti-bacterial fog eliminates 99.7% of airborne pathogens." },
-  { icon: <Wind size={20} />,           title: "6. Reassemble & test",       body: "Airflow & temperature checked against manufacturer specs." },
-  { icon: <ClipboardCheck size={20} />, title: "7. After photos + report",   body: "You get a full visual report + 30-day satisfaction guarantee." },
-];
-
-const PHOTOS = [
-  {
-    src: "https://images.pexels.com/photos/6471913/pexels-photo-6471913.jpeg",
-    alt: "PureBreeze technician in PPE",
-    className: "col-span-2 row-span-2",
-  },
-  {
-    src: "https://images.pexels.com/photos/7031717/pexels-photo-7031717.jpeg",
-    alt: "Dirty AC filter before service",
-  },
-  {
-    src: "https://static.prod-images.emergentagent.com/jobs/b709f5ab-53d0-4ea5-b4b8-9d180465e97f/images/92a2813178e78b5d984a568c8656e0b699106225dacea72c8bca9f4819eb04eb.png",
-    alt: "Clean AC unit after service",
-  },
-  {
-    src: "https://images.pexels.com/photos/5824517/pexels-photo-5824517.jpeg",
-    alt: "Split system install",
-    className: "col-span-2",
-  },
-  {
-    src: "https://customer-assets.emergentagent.com/wingman/05384f0b-dfa0-4afe-82d6-378d7ff1884b/attachments/380d01f5ca9b4284a3422cf2e914a624_IMG_2601.jpeg",
-    alt: "PureBreeze cleaning equipment and stripped unit",
-  },
-  {
-    src: "https://customer-assets.emergentagent.com/wingman/05384f0b-dfa0-4afe-82d6-378d7ff1884b/attachments/077b3fc60c854fa98080d58f4f442ac5_IMG_2604.jpeg",
-    alt: "Meticulous strip-down and cleaning process",
-  },
-  {
-    src: "https://customer-assets.emergentagent.com/wingman/05384f0b-dfa0-4afe-82d6-378d7ff1884b/attachments/02cdb14a90434244877b2365b1759d1e_IMG_2605.jpeg",
-    alt: "Internal coil cleaning with protective wall-bag setup",
-  },
+  { num: "01", title: "Inspect & document",      body: "Each unit is photographed and assessed before a single panel is removed." },
+  { num: "02", title: "Strip & protect",         body: "Floors, walls and furnishings draped. The unit fully dismantled in sequence." },
+  { num: "03", title: "Hospital-grade chemistry",body: "Biodegradable enzymes break down biofilm, mould and grime at source." },
+  { num: "04", title: "Precision rinse",         body: "Each fin individually rinsed to restore manufacturer-specified airflow." },
+  { num: "05", title: "Sanitise & deodorise",    body: "A pharmaceutical-grade fog eliminates 99.7% of airborne pathogens." },
+  { num: "06", title: "Reassemble & calibrate",  body: "Performance tested against original installation specifications." },
+  { num: "07", title: "Report & guarantee",      body: "A full visual report is delivered with our 30-day satisfaction guarantee." },
 ];
 
 export default function ProcessSteps() {
   return (
-    <section className="relative py-24 lg:py-32 bg-white" data-testid="process-section">
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-20 right-0 w-[420px] h-[420px] bg-sky-100/60 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-[420px] h-[420px] bg-cyan-100/40 rounded-full blur-3xl" />
-      </div>
+    <section id="process" className="relative py-32 lg:py-40 bg-white" data-testid="process-section">
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
-          {/* photo mosaic */}
+        <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+
+          {/* Left — Image stack */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-5"
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-5 lg:sticky lg:top-32"
           >
-            <div className="grid grid-cols-4 grid-rows-3 gap-3 h-[520px]">
-              {PHOTOS.map((p, i) => (
-                <div
-                  key={i}
-                  className={`relative overflow-hidden rounded-2xl border border-sky-100 group ${p.className || ""}`}
-                  data-testid={`process-photo-${i}`}
-                >
-                  <img
-                    src={p.src}
-                    alt={p.alt}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:sscale-110"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-              ))}
-            </div>
-            <div className="mt-5 flex items-center gap-3 p-4 rounded-2xl bg-gradient-to-r from-sky-50 to-cyan-50 border border-sky-100">
-              <div className="w-10 h-10 rounded-xl bg-white border border-sky-100 flex items-center justify-center">
-                <ShieldCheck size={18} className="text-sky-600" />
+            <div className="relative">
+              <div className="relative aspect-[4/5] overflow-hidden shadow-luxe-lg">
+                <img
+                  src="https://images.unsplash.com/photo-1581275288578-bf3d3b1f3f7f?auto=format&fit=crop&w=1100&q=85"
+                  alt="Pristine air conditioning system in a refined room"
+                  className="absolute inset-0 w-full h-full object-cover img-luxe"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A2A4E]/30 via-transparent to-transparent" />
               </div>
-              <div>
-                <div className="font-display text-sm font-bold text-slate-900">30-day satisfaction guarantee</div>
-                <div className="text-xs text-slate-600">Not happy? We come back and re-clean — free.</div>
+
+              {/* Floating guarantee plate */}
+              <div className="absolute -bottom-8 -right-6 sm:-right-10 bg-white p-7 shadow-luxe-lg max-w-[260px]">
+                <div className="flex items-center gap-3 mb-3">
+                  <ShieldCheck size={18} strokeWidth={1.4} className="text-[#1F5AA8]" />
+                  <div className="eyebrow">The Guarantee</div>
+                </div>
+                <div className="font-display text-xl text-[#0A2A4E] font-light leading-snug">
+                  Thirty days of certainty
+                </div>
+                <p className="mt-2 text-xs text-[#5A6B82] leading-relaxed font-light">
+                  Not entirely satisfied? We return and re-service — at no cost.
+                </p>
               </div>
             </div>
           </motion.div>
 
-          {/* steps */}
+          {/* Right — Steps */}
           <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 rounded-full bg-sky-50 border border-sky-100 px-4 py-2 mb-5">
-              <span className="w-1.5 h-1.5 bg-sky-500 rounded-full" />
-              <span className="text-xs font-bold tracking-widest uppercase text-sky-700">How we clean</span>
+            <div className="flex items-center gap-4 mb-8">
+              <span className="w-12 h-px bg-[#1F5AA8]" />
+              <span className="eyebrow">Method</span>
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tighter text-slate-900 leading-[1.05]">
-              The PureBreeze <br /><span className="text-sky-500">7-step signature clean.</span>
+            <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl font-light text-[#0A2A4E] leading-[1.0] tracking-tight">
+              The seven-step
+              <br />
+              <span className="serif-italic text-[#1F5AA8]">signature</span> clean.
             </h2>
-            <p className="mt-5 text-lg text-slate-600 max-w-xl">
-              Every unit — from a $120 window rattler to a $5,000 ducted system — gets the exact same meticulous process.
+            <p className="mt-8 text-lg text-[#5A6B82] leading-[1.75] font-light max-w-xl">
+              Every unit — from a single window installation to a multi-zone
+              ducted system — moves through the same considered process.
             </p>
 
-            <div className="mt-8 relative">
-              <div className="absolute left-4 top-2 bottom-2 w-px bg-gradient-to-b from-sky-200 via-sky-300 to-transparent hidden sm:block" />
-              <div className="space-y-4">
-                {STEPS.map((step, i) => (
-                  <motion.div
-                    key={step.title}
-                    initial={{ opacity: 0, x: -14 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.35, delay: i * 0.05 }}
-                    className="relative flex gap-4 items-start pl-0 sm:pl-0 group"
-                    data-testid={`process-step-${i}`}
-                  >
-                    <div className="relative z-10 w-9 h-9 rounded-full bg-white border-2 border-sky-300 text-sky-600 flex items-center justify-center flex-shrink-0 group-hover:bg-sky-500 group-hover:text-white group-hover:border-sky-500 transition-colors">
-                      {step.icon}
-                    </div>
-                    <div className="pb-2">
-                      <div className="font-display text-lg font-semibold text-slate-900 tracking-tight">{step.title}</div>
-                      <div className="text-sm text-slate-600">{step.body}</div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+            <div className="mt-16 space-y-1">
+              {STEPS.map((step, i) => (
+                <motion.div
+                  key={step.title}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  className="group grid grid-cols-12 gap-6 items-start py-7 border-t border-[#E5ECF4] last:border-b"
+                  data-testid={`process-step-${i}`}
+                >
+                  <div className="col-span-2 sm:col-span-1">
+                    <span className="text-[11px] tracking-[0.32em] uppercase text-[#7BA6D9] font-medium">{step.num}</span>
+                  </div>
+                  <div className="col-span-10 sm:col-span-11">
+                    <h3 className="font-display text-xl sm:text-2xl text-[#0A2A4E] font-normal tracking-tight mb-2 transition-colors group-hover:text-[#1F5AA8]">
+                      {step.title}
+                    </h3>
+                    <p className="text-[15px] text-[#5A6B82] leading-[1.7] font-light max-w-xl">{step.body}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>

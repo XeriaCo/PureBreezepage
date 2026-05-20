@@ -29,22 +29,17 @@ import LiveChat from "@/components/LiveChat";
 
 export default function LandingPage() {
   return (
-    <div data-testid="landing-page" className="bg-white text-slate-900 overflow-x-hidden">
+    <div data-testid="landing-page" className="bg-white text-[#0E1B2E] overflow-x-hidden">
       <ScrollProgress />
       <Navbar />
       <main>
-        {/* 1. Hook */}
         <Hero />
-        {/* 2. Problem */}
-        <ScaryFacts />
-        {/* 3. Solution */}
         <Benefits />
         <ProcessSteps />
         <Gallery />
-        {/* 4. Convert — booking is now the primary CTA */}
-        <BookingCalendar />
-        {/* 5. Secondary */}
         <Services />
+        <ScaryFacts />
+        <BookingCalendar />
         <WhyChooseUs />
         <StatsCounter />
         <Testimonials />
@@ -55,7 +50,6 @@ export default function LandingPage() {
       </main>
       <Footer />
 
-      {/* Floating utilities */}
       <ScrollToTop />
       <ClickToCall />
       <LiveChat />

@@ -21,11 +21,11 @@ export default function ScrollProgress() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-[60] h-[3px] bg-transparent pointer-events-none"
+      className="fixed top-0 left-0 right-0 z-[60] h-[2px] bg-transparent pointer-events-none"
       data-testid="scroll-progress"
     >
       <div
-        className="h-full bg-gradient-to-r from-sky-400 via-cyan-400 to-sky-500 shadow-[0_0_12px_rgba(14,165,233,0.8)] transition-[width] duration-75"
+        className="h-full bg-[#1F5AA8] transition-[width] duration-75"
         style={{ width: `${pct}%` }}
       />
     </div>

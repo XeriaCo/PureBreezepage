@@ -3,100 +3,96 @@ import { motion } from "framer-motion";
 import { Leaf, DollarSign, Heart, Moon, Sparkles, Zap } from "lucide-react";
 
 const BENEFITS = [
-  { icon: <DollarSign size={22} />, title: "Save up to 30% on power", body: "A clean coil transfers heat efficiently — less load, lower bills every quarter." },
-  { icon: <Heart size={22} />,      title: "Healthier family",        body: "Remove mould, bacteria and allergens. Breathe hospital-grade filtered air." },
-  { icon: <Moon size={22} />,       title: "Whisper-quiet nights",    body: "A debris-free fan runs silent — sleep deeper without that rattling hum." },
-  { icon: <Zap size={22} />,        title: "Restore icy performance", body: "Feel full cooling power within minutes, even on Queensland's hottest days." },
-  { icon: <Leaf size={22} />,       title: "Eco-friendly sanitisation", body: "Biodegradable enzymes kill pathogens without harsh chemicals or residue." },
-  { icon: <Sparkles size={22} />,   title: "Extend unit life by 5+ years", body: "Regular professional cleans double the lifespan of your investment." },
+  { num: "01", icon: <DollarSign size={18} strokeWidth={1.4} />, title: "Energy returned",     body: "Clean coils transfer heat efficiently. Most clients see up to 30% lower running costs from the next quarter." },
+  { num: "02", icon: <Heart size={18} strokeWidth={1.4} />,      title: "Healthier rooms",     body: "Mould, bacteria and allergens are removed at source. The air your family breathes becomes the air you trust." },
+  { num: "03", icon: <Moon size={18} strokeWidth={1.4} />,       title: "Quieter nights",      body: "A debris-free fan runs near silent. Sleep without the familiar rattling hum of a tired unit." },
+  { num: "04", icon: <Zap size={18} strokeWidth={1.4} />,        title: "Icy performance",     body: "Full cooling capacity restored within minutes — exactly as it felt the day your system was installed." },
+  { num: "05", icon: <Leaf size={18} strokeWidth={1.4} />,       title: "Considered chemistry",body: "Biodegradable, hospital-grade enzymes. Pet-safe, child-safe, residue-free once dry." },
+  { num: "06", icon: <Sparkles size={18} strokeWidth={1.4} />,   title: "Years extended",      body: "Annual professional cleans double the working life of your investment. Quietly, year after year." },
 ];
 
 export default function Benefits() {
   return (
-    <section id="benefits" className="relative py-24 lg:py-32 bg-white" data-testid="benefits-section">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
+    <section id="benefits" className="relative py-32 lg:py-40 bg-white" data-testid="benefits-section">
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12">
+
+        <div className="grid lg:grid-cols-12 gap-12 items-end mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-5"
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-7"
           >
-            <div className="inline-flex items-center gap-2 rounded-full bg-sky-50 border border-sky-100 px-4 py-2 mb-5">
-              <span className="w-1.5 h-1.5 bg-sky-500 rounded-full" />
-              <span className="text-xs font-bold tracking-widest uppercase text-sky-700">The PureBreeze difference</span>
+            <div className="flex items-center gap-4 mb-8">
+              <span className="w-12 h-px bg-[#1F5AA8]" />
+              <span className="eyebrow">The Difference</span>
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter text-slate-900 leading-[1.05]">
-              From <span className="text-red-500 line-through decoration-2">toxic</span> to{" "}
-              <span className="text-sky-500">transformative.</span>
+            <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl font-light text-[#0A2A4E] leading-[1.0] tracking-tight">
+              Six quiet improvements
+              <br />
+              <span className="serif-italic text-[#1F5AA8]">you'll feel</span> by morning.
             </h2>
-            <p className="mt-6 text-lg text-slate-600 max-w-lg leading-relaxed">
-              Our signature clean doesn't just remove the dirt — it restores your unit to better-than-new condition and your home to
-              <span className="font-semibold text-slate-900"> fresh coastal air</span>.
-            </p>
-
-            {/* photo mosaic */}
-            <div className="mt-8 grid grid-cols-3 gap-2" data-testid="benefits-photos">
-              <div className="relative aspect-square rounded-2xl overflow-hidden border border-sky-100">
-                <img
-                  src="https://static.prod-images.emergentagent.com/jobs/b709f5ab-53d0-4ea5-b4b8-9d180465e97f/images/92a2813178e78b5d984a568c8656e0b699106225dacea72c8bca9f4819eb04eb.png"
-                  alt="Clean AC unit"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="relative aspect-square rounded-2xl overflow-hidden border border-sky-100 row-span-2">
-                <img
-                  src="https://images.pexels.com/photos/5824517/pexels-photo-5824517.jpeg"
-                  alt="Fresh AC"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="relative aspect-square rounded-2xl overflow-hidden border border-sky-100">
-                <img
-                  src="https://images.pexels.com/photos/6471913/pexels-photo-6471913.jpeg"
-                  alt="PureBreeze technician"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="relative col-span-2 aspect-[2/1] rounded-2xl overflow-hidden border border-sky-100">
-                <img
-                  src="https://images.pexels.com/photos/6195125/pexels-photo-6195125.jpeg"
-                  alt="AC servicing"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-
-            <div className="mt-6 p-6 rounded-3xl bg-gradient-to-br from-sky-50 to-cyan-50 border border-sky-100">
-              <div className="font-display text-5xl font-black text-sky-600 tracking-tighter">99.7%</div>
-              <div className="text-sm text-slate-700 mt-1">of tested airborne pathogens eliminated after a PureBreeze clean.</div>
-            </div>
           </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="lg:col-span-5 text-lg text-[#5A6B82] leading-[1.75] font-light"
+          >
+            Our signature clean does more than remove dirt. It restores
+            the original character of your system — and the original
+            calm of your home.
+          </motion.p>
+        </div>
 
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {BENEFITS.map((b, i) => (
-              <motion.div
-                key={b.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="group relative rounded-3xl bg-white border border-sky-100 p-6 shadow-[0_6px_24px_rgba(14,165,233,0.06)] hover:shadow-[0_10px_30px_rgba(14,165,233,0.18)] btn-lift"
-                data-testid={`benefit-card-${i}`}
-              >
-                <div className="w-11 h-11 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center group-hover:bg-sky-500 group-hover:text-white transition-colors">
-                  {b.icon}
-                </div>
-                <h3 className="mt-4 font-display text-lg font-semibold text-slate-900 tracking-tight">{b.title}</h3>
-                <p className="mt-1 text-sm text-slate-600 leading-relaxed">{b.body}</p>
-              </motion.div>
-            ))}
+        {/* Hero image strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative w-full aspect-[16/7] overflow-hidden mb-24 shadow-luxe"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85"
+            alt="Refined interior with quietly cooled air"
+            className="absolute inset-0 w-full h-full object-cover img-luxe"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A2A4E]/40 via-[#0A2A4E]/10 to-transparent" />
+          <div className="absolute inset-0 flex items-end p-10 sm:p-16">
+            <div className="text-white max-w-md">
+              <div className="eyebrow text-white/70 mb-3">Before & After</div>
+              <p className="font-display text-2xl sm:text-3xl font-light leading-tight">
+                "Our split system smells like a brand new unit. The air feels different."
+              </p>
+              <div className="mt-4 text-xs uppercase tracking-[0.24em] text-white/70">Sarah · New Farm</div>
+            </div>
           </div>
+        </motion.div>
+
+        {/* Benefits grid — refined */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+          {BENEFITS.map((b, i) => (
+            <motion.div
+              key={b.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              className="group"
+              data-testid={`benefit-card-${i}`}
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-[11px] uppercase tracking-[0.32em] text-[#7BA6D9] font-medium">{b.num}</span>
+                <span className="h-px w-8 bg-[#DCE7F3]" />
+                <span className="text-[#1F5AA8]">{b.icon}</span>
+              </div>
+              <h3 className="font-display text-2xl text-[#0A2A4E] mb-3 font-normal tracking-tight">{b.title}</h3>
+              <p className="text-[15px] text-[#5A6B82] leading-[1.75] font-light max-w-[28ch]">{b.body}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

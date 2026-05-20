@@ -1,49 +1,49 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { AlertTriangle, Skull, Flame, Wind, Activity, Biohazard } from "lucide-react";
+import { Wind, Activity, AlertCircle, Droplets, Zap, FileWarning } from "lucide-react";
 
 const FACTS = [
   {
-    icon: <Biohazard size={24} />,
-    title: "Black Mould Spores",
-    stat: "3x more",
-    body: "A dirty split system can harbour 3x more mould spores than a typical toilet seat — pumping them into your lungs every night.",
+    icon: <Droplets size={18} strokeWidth={1.4} />,
+    title: "Black mould spores",
+    stat: "3×",
+    body: "A neglected split system can harbour three times more mould spores than a typical toilet seat — circulated through your home with every cycle.",
     source: "ASHRAE indoor air study",
   },
   {
-    icon: <Flame size={24} />,
-    title: "Electrical Fire Risk",
+    icon: <Zap size={18} strokeWidth={1.4} />,
+    title: "Electrical fire risk",
     stat: "1 in 9",
-    body: "Australian fire reports link 1 in 9 residential AC fires to excessive dust build-up around electrical components.",
-    source: "Qld Fire & Emergency data",
+    body: "Australian fire reports link one in nine residential AC fires to excessive dust around electrical components.",
+    source: "Qld Fire & Emergency",
   },
   {
-    icon: <Activity size={24} />,
-    title: "Asthma & Allergies",
+    icon: <Activity size={18} strokeWidth={1.4} />,
+    title: "Asthma & allergies",
     stat: "+62%",
-    body: "Homes with uncleaned AC units report 62% more asthma flare-ups and chronic sinus issues, especially in children.",
-    source: "Asthma Australia 2023",
+    body: "Homes with neglected systems report 62% more asthma flare-ups and chronic sinus issues, especially among children.",
+    source: "Asthma Australia, 2023",
   },
   {
-    icon: <Wind size={24} />,
-    title: "Power Bill Explosion",
+    icon: <Wind size={18} strokeWidth={1.4} />,
+    title: "Quarterly power waste",
     stat: "+35%",
-    body: "A dusty coil forces your unit to work overtime, spiking your Queensland power bill by up to 35% every quarter.",
-    source: "Energy QLD report",
+    body: "Dust-coated coils force your unit to work harder, increasing your power bill by up to 35% per quarter in Queensland.",
+    source: "Energy Queensland",
   },
   {
-    icon: <Skull size={24} />,
-    title: "Legionella Bacteria",
+    icon: <AlertCircle size={18} strokeWidth={1.4} />,
+    title: "Legionella bacteria",
     stat: "Fatal",
-    body: "Stagnant water inside drain trays breeds Legionella — a potentially fatal lung bacteria for the elderly and immunocompromised.",
+    body: "Stagnant drain trays can breed Legionella — a potentially fatal lung bacterium for the elderly and immunocompromised.",
     source: "NSW Health advisory",
   },
   {
-    icon: <AlertTriangle size={24} />,
-    title: "Voided Warranty",
-    stat: "0 cover",
-    body: "Most manufacturers void your warranty if you don't professionally clean your unit at least once every 12 months.",
-    source: "Daikin, Mitsubishi T&Cs",
+    icon: <FileWarning size={18} strokeWidth={1.4} />,
+    title: "Voided warranty",
+    stat: "Zero",
+    body: "Most manufacturers void your warranty unless the unit is professionally cleaned at least once every twelve months.",
+    source: "Daikin & Mitsubishi T&Cs",
   },
 ];
 
@@ -51,69 +51,67 @@ export default function ScaryFacts() {
   return (
     <section
       id="danger"
-      className="relative bg-neutral-950 text-white overflow-hidden"
+      className="relative bg-navy-deep text-white overflow-hidden"
       data-testid="scary-facts-section"
     >
-      {/* red glow orbs */}
-      <div className="absolute top-0 -left-40 w-[500px] h-[500px] bg-red-700/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 -right-40 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-3xl" />
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-32 lg:py-40 relative">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl"
-        >
-          <div className="inline-flex items-center gap-2 rounded-full bg-red-500/10 border border-red-500/30 px-4 py-2 mb-6">
-            <AlertTriangle size={14} className="text-red-400" />
-            <span className="text-xs font-bold tracking-widest uppercase text-red-400">
-              What's Hiding In Your Air
-            </span>
-          </div>
+        <div className="grid lg:grid-cols-12 gap-12 items-end mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-7"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <span className="w-12 h-px bg-[#7BA6D9]" />
+              <span className="eyebrow text-[#7BA6D9]">What hides inside</span>
+            </div>
+            <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl font-light text-white leading-[1.0] tracking-tight">
+              The unseen
+              <br />
+              <span className="serif-italic text-[#7BA6D9]">case for cleaning.</span>
+            </h2>
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="lg:col-span-5 text-lg text-white/70 leading-[1.75] font-light"
+          >
+            Every cycle of a neglected air conditioner moves more than air.
+            These are not scare tactics — they are documented Australian
+            facts. Quietly worth knowing.
+          </motion.p>
+        </div>
 
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter leading-[1.05]">
-            The <span className="text-red-500">scary truth</span> about<br />
-            your uncleaned AC.
-          </h2>
-
-          <p className="mt-6 text-lg text-neutral-300 max-w-2xl leading-relaxed">
-            Every time your air conditioner turns on, it could be pushing mould, bacteria and allergens directly into your lungs.
-            These aren't scare tactics — they're documented Australian facts.
-          </p>
-        </motion.div>
-
-        {/* Bento grid */}
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10">
           {FACTS.map((f, i) => (
             <motion.div
               key={f.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`relative rounded-3xl p-7 border border-red-900/30 bg-neutral-900/60 backdrop-blur hover:border-red-500/50 transition-colors ${
-                i === 0 ? "md:col-span-2 lg:col-span-2 lg:row-span-1" : ""
-              }`}
+              transition={{ duration: 0.45, delay: i * 0.07 }}
+              className="relative bg-navy-deep p-10 lg:p-12 hover:bg-[#08213F] transition-colors"
               data-testid={`scary-fact-${i}`}
             >
-              <div className="flex items-start justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-400 flex items-center justify-center">
-                  {f.icon}
-                </div>
-                <span className="font-display text-3xl font-black text-red-500 tracking-tight">
+              <div className="flex items-start justify-between mb-8">
+                <span className="text-[#7BA6D9]">{f.icon}</span>
+                <span className="font-display text-4xl text-[#7BA6D9] font-light tracking-tight">
                   {f.stat}
                 </span>
               </div>
-              <h3 className="mt-5 font-display text-xl font-bold text-white tracking-tight">
+              <h3 className="font-display text-xl text-white font-normal tracking-tight mb-3">
                 {f.title}
               </h3>
-              <p className="mt-2 text-sm text-neutral-300 leading-relaxed">
+              <p className="text-[14px] text-white/65 leading-[1.7] font-light">
                 {f.body}
               </p>
-              <p className="mt-4 text-[10px] uppercase tracking-widest text-neutral-500">
-                Source: {f.source}
+              <p className="mt-8 pt-5 border-t border-white/10 text-[10px] uppercase tracking-[0.24em] text-white/40">
+                {f.source}
               </p>
             </motion.div>
           ))}
@@ -124,23 +122,22 @@ export default function ScaryFacts() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-16 flex flex-col sm:flex-row items-center justify-between gap-6 p-8 rounded-3xl bg-gradient-to-r from-red-600 to-red-700 text-white"
+          className="mt-20 flex flex-col sm:flex-row items-center justify-between gap-8 py-12 border-t border-b border-white/15"
           data-testid="scary-cta-banner"
         >
           <div>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight">
-              Don't let your AC make your family sick.
+            <div className="eyebrow text-[#7BA6D9] mb-3">The remedy</div>
+            <h3 className="font-display text-3xl sm:text-4xl text-white font-light tracking-tight max-w-xl leading-tight">
+              Restore the quiet, clean air<br /> your home was designed for.
             </h3>
-            <p className="text-red-100 mt-1 text-sm sm:text-base">
-              Get an instant quote in under 60 seconds — no call required.
-            </p>
           </div>
           <a
             href="#book"
-            className="inline-flex items-center justify-center rounded-full bg-white text-red-700 hover:bg-red-50 px-7 py-3.5 font-bold text-sm shadow-xl btn-lift whitespace-nowrap"
+            className="inline-flex items-center gap-3 bg-white text-[#0A2A4E] hover:bg-[#F2F7FD] px-8 py-5 text-[12px] uppercase tracking-[0.24em] font-medium btn-lift whitespace-nowrap"
             data-testid="scary-cta-button"
           >
-            Book My Clean Now →
+            Schedule a Service
+            <span className="text-lg">→</span>
           </a>
         </motion.div>
       </div>
