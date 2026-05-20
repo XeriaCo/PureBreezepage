@@ -1,59 +1,62 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Phone } from "lucide-react";
+import { Phone, ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden pt-32 pb-20 sm:pt-36 sm:pb-24"
+      className="relative overflow-hidden min-h-[100vh] flex items-end"
       data-testid="hero-section"
     >
-      {/* Snowy mountain backdrop */}
+      {/* Full-bleed cinematic backdrop */}
       <div className="absolute inset-0 -z-10">
         <img
-          src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=2200&q=85"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover img-luxe"
+          src="/webbackground.png"
+          alt="PureBreeze — modern office with pristine ceiling cassette air conditioning"
+          className="absolute inset-0 w-full h-full object-cover"
+          fetchpriority="high"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/55 to-white/85" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(242,247,253,0.4)_0%,rgba(255,255,255,0.85)_100%)]" />
+        {/* Bottom-up gradient so the headline & data card stay legible regardless of the photo */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#061A33]/85" />
+        {/* Side vignette to soften the busy desk area */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A2A4E]/30 via-transparent to-[#0A2A4E]/20" />
       </div>
 
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10 relative">
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10 w-full pb-16 sm:pb-20 lg:pb-24 pt-32 relative">
 
-                <div className="grid lg:grid-cols-12 gap-12 items-start">
+        <div className="grid lg:grid-cols-12 gap-10 items-end">
 
           {/* LEFT — Headline + CTA */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="lg:col-span-7"
+            transition={{ duration: 0.9, delay: 0.15 }}
+            className="lg:col-span-7 text-white"
           >
-            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[5.2rem] text-[#0A2A4E] leading-[1.02] font-medium tracking-tight">
+            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[5.2rem] leading-[1.02] font-medium tracking-tight">
               Cleaner air.
               <br />
-              <span className="text-[#7BA6D9] font-light-display">Higher standard.</span>
+              <span className="text-[#BFD4EE] font-light-display">Higher standard.</span>
             </h1>
 
-            <p className="mt-8 text-lg text-[#5A6B82] leading-[1.7] font-light max-w-md" data-testid="hero-subtitle">
-              Hospital-grade deep cleans for split systems, ducted runs
-              and commercial AC. We remove the mould, dust, mites and
-              biofilm — so you can breathe easy, every day.
+            <p className="mt-7 text-base sm:text-lg text-white/85 leading-[1.7] font-light max-w-md" data-testid="hero-subtitle">
+              Hospital-grade deep cleans for split systems, ducted runs and
+              commercial AC. So you can breathe easy — every day.
             </p>
 
-            <div className="mt-12 flex flex-wrap items-center gap-6" data-testid="hero-ctas">
+            <div className="mt-10 flex flex-wrap items-center gap-5" data-testid="hero-ctas">
               <a
                 href="#book"
-                className="pill pill-navy btn-lift px-7 py-4"
+                className="pill bg-white text-[#0A2A4E] hover:bg-[#F2F7FD] btn-lift px-7 py-4"
                 data-testid="hero-cta-quote"
               >
-                Book your clean <span className="ml-2">→</span>
+                Book your clean
+                <ArrowRight size={14} strokeWidth={1.6} className="ml-2" />
               </a>
               <a
                 href="tel:0490205298"
-                className="flex items-center gap-2.5 text-sm text-[#0A2A4E] font-medium link-underline"
+                className="flex items-center gap-2.5 text-sm text-white font-medium border-b border-white/40 hover:border-white pb-1 transition-colors"
                 data-testid="hero-cta-call"
               >
                 <Phone size={14} strokeWidth={1.6} />
@@ -66,10 +69,10 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.25 }}
-            className="lg:col-span-5 lg:pl-10"
+            transition={{ duration: 0.9, delay: 0.3 }}
+            className="lg:col-span-5"
           >
-            <div className="data-card max-w-[420px] ml-auto" data-testid="hero-data-card">
+            <div className="data-card max-w-[420px] ml-auto backdrop-blur-sm" data-testid="hero-data-card" style={{ background: "rgba(255,255,255,0.96)" }}>
               <div className="px-7 pt-7 pb-6">
                 <div className="flex items-center gap-2 mb-5">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#1F5AA8]" />
