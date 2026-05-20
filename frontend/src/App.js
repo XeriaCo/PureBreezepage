@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
 import LandingPage from "@/pages/LandingPage";
 import ThankYou from "@/pages/ThankYou";
+import CallRequested from "@/pages/CallRequested";
 import AdminLogin from "@/pages/AdminLogin";
 import AdminDashboard from "@/pages/AdminDashboard";
 
@@ -18,6 +19,9 @@ function App() {
           <Route path="/thanks" element={<ThankYou />} />
           <Route path="/contact-received" element={<ThankYou />} />
           <Route path="/contact-thanks" element={<ThankYou />} />
+          <Route path="/call-requested" element={<CallRequested />} />
+          <Route path="/call-thanks" element={<CallRequested />} />
+          <Route path="/calling" element={<CallRequested />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/*" element={<AdminDashboard />} />
