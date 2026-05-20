@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "sonner";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
@@ -13,6 +14,7 @@ const inputClass = "mt-2 rounded-xl border-[#DCE7F3] focus:border-[#1F5AA8] focu
 const labelClass = "text-[11px] uppercase tracking-[0.22em] text-[#5A6B82] font-medium";
 
 export default function Contact() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({ name: "", phone: "", email: "", service_type: "", suburb: "", message: "" });
   const [loading, setLoading] = useState(false);
 
@@ -21,9 +23,9 @@ export default function Contact() {
     if (!form.name || !form.phone) { toast.error("Please share at least your name and phone."); return; }
     setLoading(true);
     try {
-      await axios.post(`${API}/contact`, form);
-      toast.success("Thank you. We will be in touch within one business hour.");
+      const { data } = await axios.post(`${API}/contact`, form);
       setForm({ name: "", phone: "", email: "", service_type: "", suburb: "", message: "" });
+      navigate("/thank-you", { state: { kind: "callback", reference: data?.id, name: form.name, phone: form.phone } });
     } catch {
       toast.error("Sorry, something went wrong. Please call 0490 507 878.");
     } finally { setLoading(false); }

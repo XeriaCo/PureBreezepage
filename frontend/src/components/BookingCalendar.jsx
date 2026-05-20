@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { format } from "date-fns";
 import { CalendarDays, Clock, CheckCircle2, Sun, CloudSun, Sunset, ArrowRight } from "lucide-react";
@@ -40,6 +41,7 @@ const inputClass = "mt-2 rounded-xl border-[#DCE7F3] focus:border-[#1F5AA8] focu
 const labelClass = "text-[11px] uppercase tracking-[0.22em] text-[#5A6B82] font-medium";
 
 export default function BookingCalendar() {
+  const navigate = useNavigate();
   const [date, setDate] = useState(undefined);
   const [slot, setSlot] = useState(null);
   const [availability, setAvailability] = useState(null);
@@ -83,8 +85,7 @@ export default function BookingCalendar() {
         booking_date: toISODate(date),
         time_slot: slot,
       });
-      setConfirmation(data);
-      toast.success("Booking received. We will confirm by phone shortly.");
+      navigate("/thank-you", { state: { kind: "booking", reference: data?.id, name: form.name, phone: form.phone, booking_date: toISODate(date), time_slot: slot } });
     } catch (err) {
       const msg = err?.response?.data?.detail || "Couldn't book right now. Please call 0490 507 878.";
       toast.error(msg);
