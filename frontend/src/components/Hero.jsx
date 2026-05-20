@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Phone, CheckCircle2 } from "lucide-react";
-import { PureBreezeLogo } from "@/components/PureBreezeLogo";
+import { Phone } from "lucide-react";
 
 export default function Hero() {
   return (
