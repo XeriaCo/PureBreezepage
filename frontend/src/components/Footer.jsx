@@ -1,5 +1,5 @@
 import React from "react";
-import { PureBreezeLogo } from "@/components/PureBreezeLogo";
+import { PureBreezeLogo, PureBreezeLockup } from "@/components/PureBreezeLogo";
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
 
 const COLS = [
@@ -32,7 +32,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-2">
             <a href="#top" className="inline-block mb-5">
-              <PureBreezeLogo size={44} showWordmark showTagline />
+              <PureBreezeLockup height={64} />
             </a>
             <p className="text-[13px] text-[#5A6B82] leading-[1.7] font-light max-w-xs">
               Hospital-grade air cleaning for homes and businesses across
