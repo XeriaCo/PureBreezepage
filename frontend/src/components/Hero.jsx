@@ -10,7 +10,7 @@ export default function Hero() {
       data-testid="hero-section"
     >
       {/* Full-bleed cinematic backdrop */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 z-0">
         <img
           src="/webbackground.png"
           alt="PureBreeze — modern office with pristine ceiling cassette air conditioning"
@@ -25,7 +25,7 @@ export default function Hero() {
 
       <div className="flex-1" />
 
-      <div className="relative w-full pb-16 sm:pb-20 lg:pb-24">
+      <div className="relative z-10 w-full pb-16 sm:pb-20 lg:pb-24">
         <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10 grid grid-cols-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
