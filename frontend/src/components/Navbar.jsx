@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { PureBreezeLogo } from "@/components/PureBreezeLogo";
-import { Button } from "@/components/ui/button";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const NAV = [
-  { label: "Services",  href: "#services" },
-  { label: "Process",   href: "#process"  },
-  { label: "Gallery",   href: "#gallery"  },
-  { label: "Reviews",   href: "#reviews"  },
-  { label: "Contact",   href: "#contact"  },
+  { label: "Dangers",  href: "#danger"   },
+  { label: "Benefits", href: "#benefits" },
+  { label: "Services", href: "#services" },
+  { label: "Process",  href: "#process"  },
+  { label: "Gallery",  href: "#gallery"  },
+  { label: "About",    href: "#about"    },
 ];
 
 export default function Navbar() {
@@ -30,21 +30,21 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 h-20 sm:h-24 flex items-center justify-between">
-        <a href="#top" className="flex-shrink-0 flex items-center gap-3" data-testid="nav-logo-link">
-          <PureBreezeLogo size={36} />
-          <div className="hidden sm:flex flex-col leading-none">
-            <span className="font-display text-xl text-[#0A2A4E] tracking-tight">PureBreeze</span>
-            <span className="text-[10px] tracking-luxe text-[#5A6B82] uppercase mt-0.5">Air · Curated</span>
-          </div>
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10 h-20 grid grid-cols-3 items-center">
+
+        {/* Logo */}
+        <a href="#top" className="flex items-center gap-2" data-testid="nav-logo-link">
+          <PureBreezeLogo size={28} />
+          <span className="font-display text-lg text-[#0A2A4E] font-medium tracking-tight">PureBreeze</span>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-10">
+        {/* Centred nav */}
+        <nav className="hidden lg:flex items-center justify-center gap-8">
           {NAV.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="text-[13px] font-medium uppercase tracking-[0.18em] text-[#0A2A4E] link-underline"
+              className="text-[13px] font-medium text-[#0A2A4E] hover:text-[#1F5AA8] transition-colors"
               data-testid={`nav-link-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
             >
               {item.label}
@@ -52,27 +52,21 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-6">
+        {/* Right CTA */}
+        <div className="hidden lg:flex items-center justify-end">
           <a
-            href="tel:0490507878"
-            className="flex items-center gap-2 text-sm font-medium text-[#0A2A4E] hover:text-[#1F5AA8] transition-colors"
-            data-testid="nav-phone-link"
-          >
-            <Phone size={14} strokeWidth={1.6} />
-            0490 507 878
-          </a>
-          <Button
-            onClick={() => (window.location.hash = "book")}
-            className="rounded-none bg-[#0A2A4E] hover:bg-[#061A33] text-white px-7 py-6 text-[12px] uppercase tracking-[0.22em] font-medium btn-lift border-0"
+            href="#book"
+            className="pill pill-navy btn-lift"
             data-testid="nav-cta-quote"
           >
-            Book a Service
-          </Button>
+            Book a clean <span className="ml-1.5">→</span>
+          </a>
         </div>
 
+        {/* Mobile toggle */}
         <button
           type="button"
-          className="lg:hidden p-3 text-[#0A2A4E] hover:bg-[#F2F7FD] rounded-full transition-colors"
+          className="lg:hidden p-2 text-[#0A2A4E] justify-self-end col-start-3"
           onClick={() => setOpen((o) => !o)}
           data-testid="nav-mobile-toggle"
           aria-label="Toggle menu"
@@ -83,7 +77,7 @@ export default function Navbar() {
 
       {open && (
         <div
-          className="lg:hidden bg-white/98 backdrop-blur-xl border-t border-[#E5ECF4] px-6 py-8 space-y-5"
+          className="lg:hidden bg-white/98 backdrop-blur-xl border-t border-[#E5ECF4] px-6 py-7 space-y-5"
           data-testid="nav-mobile-panel"
         >
           {NAV.map((item) => (
@@ -91,27 +85,24 @@ export default function Navbar() {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="block text-[15px] font-medium uppercase tracking-[0.2em] text-[#0A2A4E]"
+              className="block text-[15px] font-medium text-[#0A2A4E]"
               data-testid={`nav-mobile-link-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
             >
               {item.label}
             </a>
           ))}
-          <div className="divider-hair my-6" />
-          <a
-            href="tel:0490507878"
-            className="block text-base font-medium text-[#1F5AA8]"
-            data-testid="nav-mobile-phone"
-          >
+          <div className="divider-hair my-5" />
+          <a href="tel:0490507878" className="block text-base font-medium text-[#1F5AA8]" data-testid="nav-mobile-phone">
             0490 507 878
           </a>
-          <Button
-            onClick={() => { setOpen(false); window.location.hash = "book"; }}
-            className="w-full rounded-none bg-[#0A2A4E] hover:bg-[#061A33] text-white py-6 text-[12px] uppercase tracking-[0.22em] font-medium"
+          <a
+            href="#book"
+            onClick={() => setOpen(false)}
+            className="pill pill-navy w-full"
             data-testid="nav-mobile-cta"
           >
-            Book a Service
-          </Button>
+            Book a clean <span className="ml-1.5">→</span>
+          </a>
         </div>
       )}
     </header>

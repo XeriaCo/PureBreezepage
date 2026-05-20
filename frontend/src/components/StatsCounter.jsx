@@ -35,13 +35,13 @@ function StatCard({ stat, start, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="text-center px-6 py-10"
+      className="text-center px-6 py-8"
     >
-      <div className="font-display text-6xl lg:text-7xl text-[#0A2A4E] font-light tracking-tight leading-none">
-        {display}<span className="text-[#7BA6D9] text-4xl lg:text-5xl">{stat.suffix}</span>
+      <div className="font-display text-4xl lg:text-5xl text-[#0A2A4E] font-medium tracking-tight leading-none">
+        {display}<span className="text-[#7BA6D9] text-2xl lg:text-3xl">{stat.suffix}</span>
       </div>
-      <div className="mt-6 font-display text-lg text-[#0A2A4E] font-normal tracking-tight">{stat.label}</div>
-      <div className="mt-1 text-xs uppercase tracking-[0.22em] text-[#8597AE] font-medium">{stat.sub}</div>
+      <div className="mt-4 font-display text-sm text-[#0A2A4E] font-medium tracking-tight">{stat.label}</div>
+      <div className="mt-1 text-[11px] uppercase tracking-[0.22em] text-[#8597AE] font-light">{stat.sub}</div>
     </motion.div>
   );
 }
@@ -50,8 +50,8 @@ export default function StatsCounter() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.3 });
   return (
-    <section ref={ref} className="relative py-24 bg-white border-y border-[#E5ECF4]" data-testid="stats-section">
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12">
+    <section ref={ref} className="relative py-16 bg-white border-y border-[#E5ECF4]" data-testid="stats-section">
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#E5ECF4]">
           {STATS.map((s, i) => <StatCard key={s.label} stat={s} index={i} start={inView} />)}
         </div>

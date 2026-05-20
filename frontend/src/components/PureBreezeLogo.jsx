@@ -2,34 +2,25 @@ import React from "react";
 import { Wind } from "lucide-react";
 
 /**
- * Minimal PureBreeze mark — refined for the luxury redesign.
- * Default: icon mark only. Pass showWordmark to display name + sub.
+ * Minimal PureBreeze circular mark.
  */
-export const PureBreezeLogo = ({ size = 40, showWordmark = false, variant = "light" }) => {
+export const PureBreezeLogo = ({ size = 28, showWordmark = false, variant = "light" }) => {
   const isDark = variant === "dark";
-  const markBg     = isDark ? "bg-white"      : "bg-[#0A2A4E]";
-  const markColor  = isDark ? "text-[#0A2A4E]" : "text-white";
-  const textColor  = isDark ? "text-white"    : "text-[#0A2A4E]";
-  const subColor   = isDark ? "text-white/60" : "text-[#5A6B82]";
+  const ring = isDark ? "border-white/30" : "border-[#0A2A4E]";
+  const fill = isDark ? "text-white"      : "text-[#0A2A4E]";
 
   return (
-    <div className="flex items-center gap-3" data-testid="purebreeze-logo">
+    <div className="flex items-center gap-2" data-testid="purebreeze-logo">
       <div
-        className={`flex items-center justify-center ${markBg} ${markColor}`}
+        className={`flex items-center justify-center rounded-full border ${ring} ${fill}`}
         style={{ width: size, height: size }}
       >
-        <Wind size={Math.round(size * 0.5)} strokeWidth={1.4} />
+        <Wind size={Math.round(size * 0.46)} strokeWidth={1.5} />
       </div>
-
       {showWordmark && (
-        <div className="flex flex-col leading-none">
-          <span className={`font-display font-normal text-xl tracking-tight ${textColor}`}>
-            PureBreeze
-          </span>
-          <span className={`text-[10px] uppercase tracking-[0.28em] font-medium mt-1 ${subColor}`}>
-            Air · Curated
-          </span>
-        </div>
+        <span className={`font-display font-medium text-lg tracking-tight ${isDark ? "text-white" : "text-[#0A2A4E]"}`}>
+          PureBreeze
+        </span>
       )}
     </div>
   );
