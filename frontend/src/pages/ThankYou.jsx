@@ -41,7 +41,7 @@ export default function ThankYou() {
         });
       }
     }
-  }, [kind, refId]);
+  }, [kind, refId, isContact]);
 
   return (
     <div className="bg-white text-[#0E1B2E] min-h-screen flex flex-col">
