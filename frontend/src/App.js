@@ -16,6 +16,8 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/thanks" element={<ThankYou />} />
+          <Route path="/contact-received" element={<ThankYou />} />
+          <Route path="/contact-thanks" element={<ThankYou />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/*" element={<AdminDashboard />} />

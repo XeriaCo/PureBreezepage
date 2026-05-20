@@ -13,8 +13,11 @@ const SLOT_META = {
 };
 
 export default function ThankYou() {
-  const { state } = useLocation();
-  const kind       = state?.kind || "request";   // "booking" | "callback" | "request"
+  const location = useLocation();
+  const { state, pathname } = location;
+  const isContact  = pathname.startsWith("/contact-received") || pathname.startsWith("/contact-thanks");
+  const isBooking  = state?.kind === "booking";
+  const kind       = state?.kind || (isContact ? "contact" : "request");   // "booking" | "callback" | "request"
   const refId      = state?.reference;
   const bookingDate= state?.booking_date;
   const slot       = state?.time_slot;
@@ -22,12 +25,12 @@ export default function ThankYou() {
   const name       = state?.name;
 
   useEffect(() => {
-    document.title = "Request received · PureBreeze";
+    document.title = isContact ? "Message received · PureBreeze" : "Request received · PureBreeze";
     // Fire any analytics conversion event here (gtag/fbq) safely
     if (typeof window !== "undefined") {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
-        event: "quote_request_received",
+        event: isContact ? "contact_form_submitted" : "quote_request_received",
         request_kind: kind,
         reference: refId || null,
       });
@@ -57,18 +60,22 @@ export default function ThankYou() {
               <CheckCircle2 size={22} strokeWidth={1.4} />
             </div>
 
-            <span className="eyebrow">Request received</span>
+            <span className="eyebrow">{isContact ? "Message received" : "Request received"}</span>
 
             <h1 className="mt-4 font-display text-4xl sm:text-5xl text-[#0A2A4E] font-medium tracking-tight leading-[1.1]">
               {name ? `Thank you, ${name}.` : "Thank you."}
               <br />
-              <span className="text-[#7BA6D9] font-light-display">We'll be in touch shortly.</span>
+              <span className="text-[#7BA6D9] font-light-display">
+                {isContact ? "We've received your message." : "We'll be in touch shortly."}
+              </span>
             </h1>
 
             <p className="mt-6 text-base sm:text-lg text-[#5A6B82] leading-[1.7] font-light max-w-md mx-auto">
               {kind === "booking"
                 ? "Your reservation has been received. A PureBreeze technician will call to confirm your time slot within one business hour."
-                : "Your request has been received. We will call you within one business hour to confirm your details and schedule your service."}
+                : isContact
+                  ? "Your message has been received. A member of the PureBreeze team will respond within one business hour during office hours."
+                  : "Your request has been received. We will call you within one business hour to confirm your details and schedule your service."}
             </p>
 
             {refId && (

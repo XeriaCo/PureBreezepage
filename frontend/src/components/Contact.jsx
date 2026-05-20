@@ -25,7 +25,7 @@ export default function Contact() {
     try {
       const { data } = await axios.post(`${API}/contact`, form);
       setForm({ name: "", phone: "", email: "", service_type: "", suburb: "", message: "" });
-      navigate("/thank-you", { state: { kind: "callback", reference: data?.id, name: form.name, phone: form.phone } });
+      navigate("/contact-received", { state: { kind: "contact", reference: data?.id, name: form.name, phone: form.phone } });
     } catch {
       toast.error("Sorry, something went wrong. Please call 0490 507 878.");
     } finally { setLoading(false); }
