@@ -1,12 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Phone, ArrowRight } from "lucide-react";
+import { Phone, ArrowRight, Star } from "lucide-react";
 
 export default function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden min-h-[100vh] flex items-end"
+      className="relative overflow-hidden min-h-[100vh] flex flex-col"
       data-testid="hero-section"
     >
       {/* Full-bleed cinematic backdrop */}
@@ -17,102 +17,66 @@ export default function Hero() {
           className="absolute inset-0 w-full h-full object-cover"
           fetchpriority="high"
         />
-        {/* Bottom-up gradient so the headline & data card stay legible regardless of the photo */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#061A33]/85" />
-        {/* Side vignette to soften the busy desk area */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A2A4E]/30 via-transparent to-[#0A2A4E]/20" />
+        {/* Strong bottom-up gradient so headline reads cleanly without touching the baked-in logo */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#061A33] from-0% via-[#061A33]/70 via-25% to-transparent to-55%" />
       </div>
 
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10 w-full pb-16 sm:pb-20 lg:pb-24 pt-32 relative">
+      {/* Push content to the very bottom of the viewport, well below the baked-in logo */}
+      <div className="flex-1" />
 
-        <div className="grid lg:grid-cols-12 gap-10 items-end">
+      <div className="relative max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10 w-full pb-16 sm:pb-20 lg:pb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.15 }}
+          className="max-w-2xl text-white"
+        >
+          <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[5.4rem] leading-[1.02] font-medium tracking-tight">
+            Cleaner air.
+            <br />
+            <span className="text-[#BFD4EE] font-light-display">Higher standard.</span>
+          </h1>
 
-          {/* LEFT — Headline + CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.15 }}
-            className="lg:col-span-7 text-white"
-          >
-            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[5.2rem] leading-[1.02] font-medium tracking-tight">
-              Cleaner air.
-              <br />
-              <span className="text-[#BFD4EE] font-light-display">Higher standard.</span>
-            </h1>
+          <p className="mt-7 text-base sm:text-lg text-white/85 leading-[1.7] font-light max-w-md" data-testid="hero-subtitle">
+            Hospital-grade deep cleans for split systems, ducted runs and
+            commercial AC. So you can breathe easy — every day.
+          </p>
 
-            <p className="mt-7 text-base sm:text-lg text-white/85 leading-[1.7] font-light max-w-md" data-testid="hero-subtitle">
-              Hospital-grade deep cleans for split systems, ducted runs and
-              commercial AC. So you can breathe easy — every day.
-            </p>
+          <div className="mt-9 flex flex-wrap items-center gap-5" data-testid="hero-ctas">
+            <a
+              href="#book"
+              className="pill bg-white text-[#0A2A4E] hover:bg-[#F2F7FD] btn-lift px-7 py-4"
+              data-testid="hero-cta-quote"
+            >
+              Book your clean
+              <ArrowRight size={14} strokeWidth={1.6} className="ml-2" />
+            </a>
+            <a
+              href="tel:0490205298"
+              className="flex items-center gap-2.5 text-sm text-white font-medium border-b border-white/40 hover:border-white pb-1 transition-colors"
+              data-testid="hero-cta-call"
+            >
+              <Phone size={14} strokeWidth={1.6} />
+              0490 205 298
+            </a>
+          </div>
 
-            <div className="mt-10 flex flex-wrap items-center gap-5" data-testid="hero-ctas">
-              <a
-                href="#book"
-                className="pill bg-white text-[#0A2A4E] hover:bg-[#F2F7FD] btn-lift px-7 py-4"
-                data-testid="hero-cta-quote"
-              >
-                Book your clean
-                <ArrowRight size={14} strokeWidth={1.6} className="ml-2" />
-              </a>
-              <a
-                href="tel:0490205298"
-                className="flex items-center gap-2.5 text-sm text-white font-medium border-b border-white/40 hover:border-white pb-1 transition-colors"
-                data-testid="hero-cta-call"
-              >
-                <Phone size={14} strokeWidth={1.6} />
-                0490 205 298
-              </a>
-            </div>
-          </motion.div>
-
-          {/* RIGHT — Floating air-quality card */}
-          <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.3 }}
-            className="lg:col-span-5"
-          >
-            <div className="data-card max-w-[420px] ml-auto backdrop-blur-sm" data-testid="hero-data-card" style={{ background: "rgba(255,255,255,0.96)" }}>
-              <div className="px-7 pt-7 pb-6">
-                <div className="flex items-center gap-2 mb-5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#1F5AA8]" />
-                  <span className="text-[10px] uppercase tracking-[0.28em] text-[#1F5AA8] font-medium">Air quality, post-clean</span>
-                </div>
-
-                <div className="flex items-baseline gap-2 mb-7">
-                  <span className="font-display text-7xl text-[#0A2A4E] font-light leading-none tracking-tight">97</span>
-                  <span className="text-2xl text-[#8597AE] font-light">/100</span>
-                </div>
-
-                <div className="grid grid-cols-3 gap-4 pt-6 border-t border-[#E5ECF4]">
-                  <div>
-                    <div className="text-[10px] uppercase tracking-[0.24em] text-[#8597AE] font-medium mb-2">PM 2.5</div>
-                    <div className="font-display text-xl text-[#0A2A4E] font-medium">0.4</div>
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase tracking-[0.24em] text-[#8597AE] font-medium mb-2">CFU</div>
-                    <div className="font-display text-xl text-[#0A2A4E] font-medium">nil</div>
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase tracking-[0.24em] text-[#8597AE] font-medium mb-2">Improvement</div>
-                    <div className="font-display text-xl text-[#1F5AA8] font-medium">+38%</div>
-                  </div>
-                </div>
+          {/* Small trust row in place of the data card */}
+          <div className="mt-12 pt-6 border-t border-white/15 flex flex-wrap items-center gap-x-8 gap-y-3 text-white/85">
+            <div className="flex items-center gap-2" data-testid="hero-trust-rating">
+              <div className="flex items-center gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={12} fill="#BFD4EE" stroke="#BFD4EE" strokeWidth={0} />
+                ))}
               </div>
-
-              <div className="bg-[#0A2A4E] text-white px-7 py-5 flex items-center gap-3">
-                <span className="relative inline-flex w-2 h-2">
-                  <span className="absolute inset-0 rounded-full bg-[#7BA6D9] opacity-70 animate-ping" />
-                  <span className="relative w-2 h-2 rounded-full bg-[#7BA6D9]" />
-                </span>
-                <div className="flex flex-col leading-tight">
-                  <span className="text-[10px] uppercase tracking-[0.24em] text-white/60 font-medium">Next available</span>
-                  <span className="text-sm font-medium mt-0.5">Tomorrow · 8:00 am · Brisbane</span>
-                </div>
-              </div>
+              <span className="text-sm font-medium">4.9</span>
+              <span className="text-[11px] text-white/60">· 380+ reviews</span>
             </div>
-          </motion.div>
-        </div>
+            <div className="text-[11px] uppercase tracking-[0.22em] text-white/60 font-medium">$20M Insured</div>
+            <div className="text-[11px] uppercase tracking-[0.22em] text-white/60 font-medium">Same-day service</div>
+            <div className="text-[11px] uppercase tracking-[0.22em] text-white/60 font-medium">HVAC certified</div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
