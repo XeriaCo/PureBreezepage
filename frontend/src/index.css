@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
 :root {
   /* Pale-blue luxury palette */
@@ -52,6 +52,12 @@ h1, h2, h3, h4, h5, h6, .font-display {
 }
 
 .tracking-luxe { letter-spacing: 0.28em; }
+
+.font-serif-display {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
 
 code { font-family: source-code-pro, Menlo, Monaco, Consolas, monospace; }
 

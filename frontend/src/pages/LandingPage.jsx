@@ -2,6 +2,7 @@ import React from "react";
 import { MotionConfig } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import ServicesStrip from "@/components/ServicesStrip";
 
 // CORE — services + booking + contact prioritised
 import Services from "@/components/Services";
@@ -30,6 +31,7 @@ export default function LandingPage() {
         <Navbar />
         <main>
           <Hero />
+          <ServicesStrip />
           <Services />
           <ProcessSteps />
           <StatsCounter />
