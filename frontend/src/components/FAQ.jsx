@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from "@/components/ui/accordion";
+import { fadeUp, viewportOnce, EASE } from "@/lib/anim";
 
 const FAQS = [
   { q: "How often should I have my system cleaned?",         a: "At minimum every twelve months for residential split systems in Queensland's humid climate. Homes with pets, allergies, or coastal salt air benefit from a six-month interval." },
@@ -19,34 +20,59 @@ export default function FAQ() {
       <div className="max-w-[900px] mx-auto px-6 sm:px-8 lg:px-10">
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-12"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="text-center mb-12 lg:mb-14"
         >
+          <div className="mb-5 inline-flex items-center gap-3">
+            <span className="w-8 h-px bg-[#7BA6D9]" />
+            <span className="text-[11px] uppercase tracking-[0.28em] text-[#7BA6D9] font-medium">Good to know</span>
+            <span className="w-8 h-px bg-[#7BA6D9]" />
+          </div>
           <h2 className="font-display text-4xl sm:text-5xl text-[#0A2A4E] font-medium tracking-tight">
             Frequently <span className="text-[#7BA6D9] font-light-display">asked.</span>
           </h2>
+          <p className="mt-5 text-base text-[#5A6B82] font-light">
+            Everything most customers want to know before they book.
+          </p>
         </motion.div>
 
         <Accordion type="single" collapsible className="space-y-0">
           {FAQS.map((f, i) => (
-            <AccordionItem
+            <motion.div
               key={i}
-              value={`item-${i}`}
-              className="border-t border-[#E5ECF4] last:border-b"
-              data-testid={`faq-item-${i}`}
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: i * 0.06, ease: EASE }}
             >
-              <AccordionTrigger className="text-left font-display text-base sm:text-lg text-[#0A2A4E] hover:no-underline hover:text-[#1F5AA8] transition-colors py-6 font-medium tracking-tight">
-                {f.q}
-              </AccordionTrigger>
-              <AccordionContent className="text-[#5A6B82] text-sm sm:text-[15px] leading-[1.75] pb-6 font-light max-w-[62ch]">
-                {f.a}
-              </AccordionContent>
-            </AccordionItem>
+              <AccordionItem
+                value={`item-${i}`}
+                className="border-t border-[#E5ECF4] last:border-b"
+                data-testid={`faq-item-${i}`}
+              >
+                <AccordionTrigger className="text-left font-display text-base sm:text-lg text-[#0A2A4E] hover:no-underline hover:text-[#1F5AA8] transition-colors py-6 font-medium tracking-tight">
+                  {f.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-[#5A6B82] text-sm sm:text-[15px] leading-[1.75] pb-6 font-light max-w-[62ch]">
+                  {f.a}
+                </AccordionContent>
+              </AccordionItem>
+            </motion.div>
           ))}
         </Accordion>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-10 text-center text-sm text-[#8597AE] font-light"
+        >
+          Still curious? Call us on <a href="tel:0490205298" className="text-[#1F5AA8] font-medium hover:underline">0490 205 298</a> — we answer our own phones.
+        </motion.p>
       </div>
     </section>
   );
