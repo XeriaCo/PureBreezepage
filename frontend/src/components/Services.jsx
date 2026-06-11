@@ -9,7 +9,7 @@ const SERVICES = [
     title: "Split System Cleaning",
     sub: "Residential homes & apartments",
     desc: "A full strip-down chemical clean that removes mould, biofilm and dust from deep inside the unit — not just the filters.",
-    image: "https://images.unsplash.com/photo-1631545806609-aaeed8b86259?auto=format&fit=crop&w=1200&q=85",
+    image: "/services/service-split.webp",
     bullets: ["Chemical coil wash", "Filter deep clean", "Fan blade sanitisation", "Drain line flush"],
   },
   {
@@ -17,7 +17,7 @@ const SERVICES = [
     title: "Ducted System Cleaning",
     sub: "Whole-home ducted systems",
     desc: "Every vent, every return, the main unit and the ductwork itself — finished with an antibacterial fog through the entire run.",
-    image: "https://images.unsplash.com/photo-1556909114-44e3e9622c6c?auto=format&fit=crop&w=1200&q=85",
+    image: "/services/service-ducted.webp",
     bullets: ["All vents & returns", "Main unit service", "Antibacterial fog", "Airflow rebalance"],
   },
   {
@@ -25,7 +25,7 @@ const SERVICES = [
     title: "Commercial Cleaning",
     sub: "Offices, retail & hospitality",
     desc: "After-hours servicing with written compliance reporting, so your team and customers walk into clean air every morning.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85",
+    image: "/services/service-commercial.webp",
     bullets: ["After-hours service", "Compliance report", "Multi-unit discount", "Tenant-safe chemicals"],
   },
   {
@@ -33,7 +33,7 @@ const SERVICES = [
     title: "Air Quality Testing",
     sub: "Pre & post-clean diagnostics",
     desc: "Laboratory-grade measurement before and after the clean — so the improvement isn't a promise, it's a number on a report.",
-    image: "https://images.unsplash.com/photo-1605007493699-af65834f8a00?auto=format&fit=crop&w=1200&q=85",
+    image: "/services/service-airquality.webp",
     bullets: ["PM 2.5 monitoring", "CFU microbial count", "VOC analysis", "Written report"],
   },
 ];
